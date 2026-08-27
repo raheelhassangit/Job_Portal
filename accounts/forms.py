@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import User
 
 class SignUpForm(UserCreationForm):
-    role = forms.ChoiceField(choices=User.Role.choices)
+    role = forms.ChoiceField(choices=User.Role.choices, widget=forms.RadioSelect)
 
     class Meta:
         model = User
