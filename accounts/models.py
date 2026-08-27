@@ -12,3 +12,5 @@ class User(AbstractUser):
         max_length=20,
         choices=Role.choices,
     )
+    
+    REQUIRED_FIELDS = ["email", "role"]
