@@ -29,6 +29,9 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = "accounts.User"
 
+LOGIN_REDIRECT_URL = "accounts:signup"  # temporary, until profile_setup exists
+LOGOUT_REDIRECT_URL = "accounts:login"
+
 # Application definition
 
 INSTALLED_APPS = [
