@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'accounts',
     'tailwind',
     'theme',
+    'widget_tweaks',
 ]
 if DEBUG:
     # Add django_browser_reload only in DEBUG mode
