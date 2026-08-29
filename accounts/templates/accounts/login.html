@@ -1,18 +1,29 @@
 {% extends "base.html" %}
-{% load static %}
-
-{% block title %}Login-page{% endblock %}
+{% load widget_tweaks %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
-
-<h1>Login</h1>
-
-    <form method="POST">
-        {% csrf_token %}
-
-        {{ form.as_p }}
-
-        <button type="submit">Login</button>
+<div class="w-96 bg-indigo-950 rounded-3xl shadow-2xl overflow-hidden">
+  <a href="{% url 'accounts:signup' %}" class="block text-center text-white text-sm font-semibold pt-4 pb-2 hover:text-purple-300 transition">
+    <p class="text-white text-sm mb-2">
+      Don't have an account?
+    </p>
+    Sign Up
+  </a>
+  <div class="bg-gray-100 rounded-t-[50%] px-8 pt-6 pb-10">
+    <h2 class="text-purple-800 text-2xl font-bold text-center mb-6">Login</h2>
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      {% for field in form %}
+        <div>
+          {% render_field field class="w-full bg-gray-200 rounded-lg px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder=field.label %}
+          {% if field.errors %}<p class="text-red-500 text-xs mt-1">{{ field.errors.0 }}</p>{% endif %}
+        </div>
+      {% endfor %}
+      <button type="submit" class="w-full bg-purple-700 text-white font-semibold py-3 rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg active:scale-95 transition-all duration-150">
+        Login
+      </button>
     </form>
-
+  </div>
+</div>
 {% endblock %}
