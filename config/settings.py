@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'theme',
     'widget_tweaks',
     'profiles',
-    'pillow'
 ]
 if DEBUG:
     # Add django_browser_reload only in DEBUG mode
