@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+
+{% block title %}Set Up Company Profile | Job Portal{% endblock %}
+
+{% block nav_links %}
+    <a href="#" class="hidden transition hover:text-violet-300 md:inline">Browse Jobs</a>
+    <a href="#" class="hidden transition hover:text-violet-300 md:inline">Find Candidates</a>
+    <a href="#" class="hidden transition hover:text-violet-300 md:inline">My Jobs</a>
+    <a href="#" class="hidden transition hover:text-violet-300 md:inline">Dashboard</a>
+{% endblock %}
+
+{% block content %}
+<div class="mx-auto max-w-6xl px-4 py-10 md:px-6">
+    <header class="mb-7 flex flex-col gap-5 md:flex-row md:items-center">
+        <span class="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-gradient-to-br from-violet-600/70 to-purple-900/80 text-violet-300 shadow-xl shadow-violet-900/30">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M5.25 21V6.75A2.25 2.25 0 017.5 4.5h6A2.25 2.25 0 0115.75 6.75V21M8.25 8.25h.008v.008H8.25V8.25zm0 3h.008v.008H8.25v-.008zm0 3h.008v.008H8.25v-.008zm3-6h.008v.008h-.008V8.25zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm3-3h.008v.008h-.008v-.008zM8.25 21v-3.75h3V21" />
+            </svg>
+        </span>
+
+        <div>
+            <h1 class="text-3xl font-bold md:text-4xl">Set Up Your Company Profile</h1>
+            <p class="mt-2 text-slate-400">
+                Add your company details to attract top talent and let candidates learn more about your organization.
+            </p>
+        </div>
+    </header>
+
+    <section class="rounded-2xl border border-violet-300/15 bg-white/[0.035] p-5 shadow-2xl shadow-black/20 backdrop-blur-md md:p-8">
+        <div class="mb-7 flex items-center gap-4 border-b border-violet-300/10 pb-6">
+            <span class="grid h-12 w-12 place-items-center rounded-full bg-violet-600/30 text-violet-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 7h-3V5a2 2 0 00-2-2H9a2 2 0 00-2 2v2H4a1 1 0 00-1 1v11a1 1 0 001 1h16a1 1 0 001-1V8a1 1 0 00-1-1zM9 5h6v2H9V5z" />
+                </svg>
+            </span>
+
+            <div>
+                <h2 class="text-xl font-semibold">Company Information</h2>
+                <p class="mt-1 text-sm text-slate-400">
+                    Provide accurate information to build trust with candidates.
+                </p>
+            </div>
+        </div>
+
+        <form method="post" enctype="multipart/form-data" class="space-y-7">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="rounded-lg border border-red-400/40 bg-red-500/10 p-4 text-sm text-red-200">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="grid gap-6 md:grid-cols-2">
+                <div>
+                    <label for="{{ form.company_name.id_for_label }}" class="mb-2 block text-sm font-semibold">
+                        Company Name <span class="text-violet-300">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="{{ form.company_name.id_for_label }}"
+                        name="{{ form.company_name.html_name }}"
+                        value="{{ form.company_name.value|default_if_none:'' }}"
+                        placeholder="e.g. TechCorp Solutions"
+                        class="w-full rounded-xl border {% if form.company_name.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
+                    >
+
+                    {% for error in form.company_name.errors %}
+                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <div>
+                    <label for="{{ form.website.id_for_label }}" class="mb-2 block text-sm font-semibold">
+                        Website
+                    </label>
+
+                    <input
+                        type="url"
+                        id="{{ form.website.id_for_label }}"
+                        name="{{ form.website.html_name }}"
+                        value="{{ form.website.value|default_if_none:'' }}"
+                        placeholder="https://www.yourcompany.com"
+                        class="w-full rounded-xl border {% if form.website.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
+                    >
+
+                    {% for error in form.website.errors %}
+                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div>
+                <label for="{{ form.description.id_for_label }}" class="mb-2 block text-sm font-semibold">
+                    Description <span class="text-violet-300">*</span>
+                </label>
+
+                <textarea
+                    id="{{ form.description.id_for_label }}"
+                    name="{{ form.description.html_name }}"
+                    rows="5"
+                    placeholder="Describe your company, mission, vision and what makes your workplace unique..."
+                    class="w-full resize-none rounded-xl border {% if form.description.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
+                >{{ form.description.value|default_if_none:"" }}</textarea>
+
+                {% for error in form.description.errors %}
+                    <p class="mt-1 text-xs text-red-300">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-2">
+                <div>
+                    <label for="{{ form.industry.id_for_label }}" class="mb-2 block text-sm font-semibold">
+                        Industry <span class="text-violet-300">*</span>
+                    </label>
+
+                    <input
+                        list="industry-list"
+                        type="text"
+                        id="{{ form.industry.id_for_label }}"
+                        name="{{ form.industry.html_name }}"
+                        value="{{ form.industry.value|default_if_none:'' }}"
+                        placeholder="Select or enter an industry"
+                        class="w-full rounded-xl border {% if form.industry.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
+                    >
+
+                    <datalist id="industry-list">
+                        <option value="Information Technology">
+                        <option value="Software Development">
+                        <option value="Education">
+                        <option value="Healthcare">
+                        <option value="Finance">
+                        <option value="Marketing">
+                        <option value="E-commerce">
+                        <option value="Manufacturing">
+                    </datalist>
+
+                    {% for error in form.industry.errors %}
+                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <div>
+                    <label for="{{ form.company_size.id_for_label }}" class="mb-2 block text-sm font-semibold">
+                        Company Size <span class="text-violet-300">*</span>
+                    </label>
+
+                    <select
+                        id="{{ form.company_size.id_for_label }}"
+                        name="{{ form.company_size.html_name }}"
+                        class="w-full rounded-xl border {% if form.company_size.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm text-slate-200 outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
+                    >
+                        <option value="">Select company size</option>
+
+                        {% for value, label in form.company_size.field.choices %}
+                            <option value="{{ value }}" {% if form.company_size.value == value %}selected{% endif %}>
+                                {{ label }}
+                            </option>
+                        {% endfor %}
+                    </select>
+
+                    {% for error in form.company_size.errors %}
+                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <div>
+                    <label for="{{ form.location.id_for_label }}" class="mb-2 block text-sm font-semibold">
+                        Location <span class="text-violet-300">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="{{ form.location.id_for_label }}"
+                        name="{{ form.location.html_name }}"
+                        value="{{ form.location.value|default_if_none:'' }}"
+                        placeholder="e.g. Lahore, Pakistan"
+                        class="w-full rounded-xl border {% if form.location.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
+                    >
+
+                    {% for error in form.location.errors %}
+                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <div>
+                    <label for="{{ form.profile_image.id_for_label }}" class="mb-2 block text-sm font-semibold">
+                        Company Logo / Profile Image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="{{ form.profile_image.id_for_label }}"
+                        name="{{ form.profile_image.html_name }}"
+                        accept="image/*"
+                        class="hidden"
+                        data-file-input
+                        data-file-name="company-image-name"
+                    >
+
+                    <label for="{{ form.profile_image.id_for_label }}" class="flex min-h-36 cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-violet-400/40 bg-violet-950/20 p-4 text-center transition hover:border-violet-300 hover:bg-violet-500/10">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mb-3 h-10 w-10 text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l-3 3m3-3l3 3M3.75 15.75a4.5 4.5 0 004.5 4.5h7.5a4.5 4.5 0 001.08-8.868A5.25 5.25 0 006.7 9.416 3.75 3.75 0 003.75 15.75z" />
+                        </svg>
+
+                        <span id="company-image-name" class="text-sm font-medium text-slate-100">
+                            Upload company logo
+                        </span>
+                        <span class="mt-1 text-xs text-slate-400">JPG or PNG, up to 5MB</span>
+                    </label>
+
+                    <p class="mt-2 text-xs text-slate-400">
+                        This logo will be visible to candidates on your company profile.
+                    </p>
+
+                    {% for error in form.profile_image.errors %}
+                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-5 border-t border-violet-300/10 pt-6 md:flex-row md:items-center md:justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-violet-600/20 text-violet-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.75l7.5 3.75v4.875c0 4.5-3.075 7.95-7.5 9.375-4.425-1.425-7.5-4.875-7.5-9.375V7.5L12 3.75z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+                        </svg>
+                    </span>
+
+                    <div>
+                        <p class="text-sm font-medium">Your information is secure</p>
+                        <p class="mt-1 text-xs text-slate-400">
+                            We never share your data with anyone.
+                        </p>
+                    </div>
+                </div>
+
+                <button type="submit" class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-violet-600 via-purple-500 to-violet-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-violet-900/40 transition hover:brightness-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3.75h8.689a2.25 2.25 0 011.591.659l2.561 2.561a2.25 2.25 0 01.659 1.591v11.689a2.25 2.25 0 01-2.25 2.25H6.75a2.25 2.25 0 01-2.25-2.25V6A2.25 2.25 0 016.75 3.75z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3.75v5.5h7.5v-5.5M8.25 20.25v-6h7.5v6" />
+                    </svg>
+                    Save Company Profile
+                </button>
+            </div>
+        </form>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.querySelectorAll("[data-file-input]").forEach((input) => {
+        input.addEventListener("change", () => {
+            const fileName = document.getElementById(input.dataset.fileName);
+
+            if (input.files.length && fileName) {
+                fileName.textContent = input.files[0].name;
+            }
+        });
+    });
+</script>
+{% endblock %}

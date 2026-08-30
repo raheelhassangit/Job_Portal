@@ -1,29 +1,128 @@
 {% extends "base.html" %}
 {% load widget_tweaks %}
-{% block title %}Login{% endblock %}
+
+{% block title %}Sign In | Job Portal{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block main_class %}min-h-screen w-full{% endblock %}
 
 {% block content %}
-<div class="w-96 bg-indigo-950 rounded-3xl shadow-2xl overflow-hidden">
-  <a href="{% url 'accounts:signup' %}" class="block text-center text-white text-sm font-semibold pt-4 pb-2 hover:text-purple-300 transition">
-    <p class="text-white text-sm mb-2">
-      Don't have an account?
-    </p>
-    Sign Up
-  </a>
-  <div class="bg-gray-100 rounded-t-[50%] px-8 pt-6 pb-10">
-    <h2 class="text-purple-800 text-2xl font-bold text-center mb-6">Login</h2>
-    <form method="post" class="space-y-4">
-      {% csrf_token %}
-      {% for field in form %}
-        <div>
-          {% render_field field class="w-full bg-gray-200 rounded-lg px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder=field.label %}
-          {% if field.errors %}<p class="text-red-500 text-xs mt-1">{{ field.errors.0 }}</p>{% endif %}
-        </div>
-      {% endfor %}
-      <button type="submit" class="w-full bg-purple-700 text-white font-semibold py-3 rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg active:scale-95 transition-all duration-150">
-        Login
-      </button>
-    </form>
-  </div>
+<div class="flex min-h-screen items-center justify-center bg-[#aa93d5] px-5 py-10">
+    <div class="grid w-full max-w-[58rem] overflow-hidden rounded-2xl bg-white shadow-2xl shadow-violet-950/30 md:min-h-[470px] md:grid-cols-[1.2fr_0.8fr]">
+
+        <!-- Welcome panel -->
+        <section class="relative hidden overflow-hidden bg-[#754ec2] px-12 py-14 text-white md:flex md:flex-col md:justify-center">
+            <div class="absolute -left-24 -top-28 h-72 w-72 rounded-full bg-[#8f6ed2]/50"></div>
+            <div class="absolute -right-24 -top-20 h-72 w-72 rotate-[-25deg] bg-[#5f3cb0]/50"></div>
+            <div class="absolute -bottom-28 -right-16 h-72 w-72 rounded-full border-[28px] border-[#9d85d6]/20"></div>
+
+            <svg class="absolute left-0 top-0 h-36 w-28 opacity-50" viewBox="0 0 120 140" fill="none">
+                <path d="M0 10C55 15 15 65 70 70C112 74 60 115 105 140" stroke="#E4DBF5" stroke-width="1.2"/>
+                <path d="M8 0C66 12 25 58 80 67C115 72 70 112 115 135" stroke="#E4DBF5" stroke-width="1.2"/>
+                <path d="M20 0C75 20 35 52 90 63C120 69 82 105 120 125" stroke="#E4DBF5" stroke-width="1.2"/>
+            </svg>
+
+            <svg class="absolute bottom-0 right-0 h-40 w-40 opacity-50" viewBox="0 0 160 160" fill="none">
+                <path d="M15 160C0 110 60 130 55 75C50 25 110 55 130 0" stroke="#E4DBF5" stroke-width="1.2"/>
+                <path d="M35 160C20 112 75 125 70 75C65 35 120 58 145 15" stroke="#E4DBF5" stroke-width="1.2"/>
+                <path d="M60 160C45 115 95 125 92 82C90 48 130 65 158 35" stroke="#E4DBF5" stroke-width="1.2"/>
+            </svg>
+
+            <span class="absolute left-16 top-24 text-xl font-light text-violet-200">+</span>
+            <span class="absolute bottom-16 left-24 text-lg font-light text-violet-200">+</span>
+            <span class="absolute left-40 top-20 h-2 w-2 rounded-full border border-violet-100"></span>
+            <span class="absolute bottom-10 left-8 h-2 w-2 rounded-full border border-violet-100"></span>
+
+            <div class="relative z-10">
+                <h1 class="text-4xl font-bold">Welcome back!</h1>
+                <p class="mt-3 max-w-xs text-base leading-relaxed text-violet-100">
+                    You can sign in to access your existing account.
+                </p>
+            </div>
+        </section>
+
+        <!-- Login panel -->
+        <section class="flex items-center bg-white px-8 py-12 sm:px-11">
+            <div class="w-full">
+                <h2 class="text-center text-3xl font-bold text-[#4d4b52]">Sign In</h2>
+
+                {% if form.non_field_errors %}
+                    <div class="mt-5 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form method="post" class="mt-8 space-y-4">
+                    {% csrf_token %}
+
+                    {% for hidden_field in form.hidden_fields %}
+                        {{ hidden_field }}
+                    {% endfor %}
+
+                    {% for field in form.visible_fields %}
+                        <div>
+                            <label for="{{ field.id_for_label }}" class="sr-only">
+                                {{ field.label }}
+                            </label>
+
+                            <div class="relative">
+                                {% if field.name == "username" %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.118a7.5 7.5 0 0115 0A17.933 17.933 0 0112 21.75a17.933 17.933 0 01-7.5-1.632z" />
+                                    </svg>
+
+                                    {% if field.errors %}
+                                        {% render_field field class="w-full rounded-full border border-red-400 px-4 py-3 pl-10 text-sm text-gray-700 outline-none placeholder:text-gray-400 focus:border-red-400 focus:ring-2 focus:ring-red-200" placeholder="Username or email" %}
+                                    {% else %}
+                                        {% render_field field class="w-full rounded-full border border-[#e3ddef] px-4 py-3 pl-10 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="Username or email" %}
+                                    {% endif %}
+
+                                {% else %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V7.875a4.5 4.5 0 00-9 0V10.5m-.75 0h10.5a1.5 1.5 0 011.5 1.5v7.5a1.5 1.5 0 01-1.5 1.5H6.75a1.5 1.5 0 01-1.5-1.5V12a1.5 1.5 0 011.5-1.5z" />
+                                    </svg>
+
+                                    {% if field.errors %}
+                                        {% render_field field class="w-full rounded-full border border-red-400 px-4 py-3 pl-10 text-sm text-gray-700 outline-none placeholder:text-gray-400 focus:border-red-400 focus:ring-2 focus:ring-red-200" placeholder="Password" %}
+                                    {% else %}
+                                        {% render_field field class="w-full rounded-full border border-[#e3ddef] px-4 py-3 pl-10 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="Password" %}
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+
+                            {% for error in field.errors %}
+                                <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+
+                    <div class="flex items-center justify-between px-1 pt-1 text-xs text-gray-500">
+                        <label class="flex cursor-pointer items-center gap-1.5">
+                            <input type="checkbox" name="remember_me" class="h-3.5 w-3.5 rounded border-gray-300 text-[#7852c4] focus:ring-[#7852c4]">
+                            Remember me
+                        </label>
+
+                        <a href="#" class="text-[#7852c4] transition hover:text-[#5f3ba9]">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="w-full rounded-full bg-[#7852c4] py-3 text-sm font-semibold text-white shadow-md shadow-violet-300/50 transition hover:bg-[#6742ad] active:scale-[0.98]">
+                        Sign In
+                    </button>
+                </form>
+
+                <p class="mt-6 text-center text-xs text-gray-500">
+                    New here?
+                    <a href="{% url 'accounts:signup' %}" class="font-medium text-[#7852c4] hover:text-[#5f3ba9]">
+                        Create an Account
+                    </a>
+                </p>
+            </div>
+        </section>
+    </div>
 </div>
 {% endblock %}

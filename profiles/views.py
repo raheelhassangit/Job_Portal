@@ -9,9 +9,11 @@ def profile_setup(request):
     if request.user.role == User.Role.CANDIDATE:
         profile = request.user.candidate_profile
         form_class = CandidateProfileForm
+        template_name = "profiles/candidate_profile_setup.html"
     else:
         profile = request.user.company_profile
         form_class = CompanyProfileForm
+        template_name = "profiles/company_profile_setup.html"
 
     if request.method == "POST":
         form = form_class(request.POST, request.FILES, instance=profile)
@@ -21,4 +23,4 @@ def profile_setup(request):
     else:
         form = form_class(instance=profile)
 
-    return render(request, "profiles/profile_setup.html", {"form": form})
+    return render(request, template_name, {"form": form})

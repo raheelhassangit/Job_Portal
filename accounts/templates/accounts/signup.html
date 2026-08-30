@@ -1,47 +1,140 @@
 {% extends "base.html" %}
 {% load widget_tweaks %}
-{% block title %}Sign Up{% endblock %}
+
+{% block title %}Create Account | Job Portal{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block main_class %}min-h-screen w-full{% endblock %}
 
 {% block content %}
-<div class="w-96 bg-indigo-950 rounded-3xl shadow-2xl overflow-hidden">
-  <div class="px-8 pt-10 pb-6">
-    <h2 class="text-white text-2xl font-bold text-center mb-6">Sign Up</h2>
-    <form method="post" class="space-y-4">
-      {% csrf_token %}
-      {% for field in form %}
-        {% if field.name == "role" %}
-          <div class="flex justify-center gap-4">
-            {% for choice in field %}
-              <label class="cursor-pointer">
-                <input type="radio"
-                       name="{{ field.html_name }}"
-                       value="{{ choice.data.value }}"
-                       id="{{ choice.id_for_label }}"
-                       class="sr-only peer"
-                       {% if choice.data.selected %}checked{% endif %}>
-                <span class="block px-6 py-2 rounded-full border-2 border-gray-400 text-gray-300 text-sm font-medium
-                             peer-checked:bg-purple-600 peer-checked:border-purple-600 peer-checked:text-white
-                             hover:border-purple-400 transition">
-                  {{ choice.choice_label }}
-                </span>
-              </label>
-            {% endfor %}
-          </div>
-        {% else %}
-          <div>
-            {% render_field field class="w-full bg-gray-200 rounded-lg px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder=field.label %}
-            {% if field.errors %}<p class="text-red-400 text-xs mt-1">{{ field.errors.0 }}</p>{% endif %}
-          </div>
-        {% endif %}
-      {% endfor %}
-      <button type="submit" class="w-full bg-purple-700 text-white font-semibold py-3 rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg active:scale-95 transition-all duration-150">
-        Sign Up
-      </button>
-    </form>
-  </div>
-  <div class="bg-gray-100 rounded-t-[50%] pt-6 pb-4 text-center">
-    <p class="text-purple-900">Already have an account?</p>
-    <a href="{% url 'accounts:login' %}" class="text-purple-800 font-semibold text-lg hover:text-purple-600 transition">Login</a>
-  </div>
+<div class="flex min-h-screen items-center justify-center bg-[#aa93d5] px-5 py-10">
+    <div class="grid w-full max-w-[58rem] overflow-hidden rounded-2xl bg-white shadow-2xl shadow-violet-950/30 md:min-h-[540px] md:grid-cols-[1.2fr_0.8fr]">
+
+        <!-- Welcome panel -->
+        <section class="relative hidden overflow-hidden bg-[#754ec2] px-12 py-14 text-white md:flex md:flex-col md:justify-center">
+            <div class="absolute -left-24 -top-28 h-72 w-72 rounded-full bg-[#8f6ed2]/50"></div>
+            <div class="absolute -right-24 -top-20 h-72 w-72 rotate-[-25deg] bg-[#5f3cb0]/50"></div>
+            <div class="absolute -bottom-28 -right-16 h-72 w-72 rounded-full border-[28px] border-[#9d85d6]/20"></div>
+
+            <svg class="absolute left-0 top-0 h-36 w-28 opacity-50" viewBox="0 0 120 140" fill="none">
+                <path d="M0 10C55 15 15 65 70 70C112 74 60 115 105 140" stroke="#E4DBF5" stroke-width="1.2"/>
+                <path d="M8 0C66 12 25 58 80 67C115 72 70 112 115 135" stroke="#E4DBF5" stroke-width="1.2"/>
+                <path d="M20 0C75 20 35 52 90 63C120 69 82 105 120 125" stroke="#E4DBF5" stroke-width="1.2"/>
+            </svg>
+
+            <svg class="absolute bottom-0 right-0 h-40 w-40 opacity-50" viewBox="0 0 160 160" fill="none">
+                <path d="M15 160C0 110 60 130 55 75C50 25 110 55 130 0" stroke="#E4DBF5" stroke-width="1.2"/>
+                <path d="M35 160C20 112 75 125 70 75C65 35 120 58 145 15" stroke="#E4DBF5" stroke-width="1.2"/>
+                <path d="M60 160C45 115 95 125 92 82C90 48 130 65 158 35" stroke="#E4DBF5" stroke-width="1.2"/>
+            </svg>
+
+            <span class="absolute left-16 top-24 text-xl font-light text-violet-200">+</span>
+            <span class="absolute bottom-16 left-24 text-lg font-light text-violet-200">+</span>
+            <span class="absolute left-40 top-20 h-2 w-2 rounded-full border border-violet-100"></span>
+            <span class="absolute bottom-10 left-8 h-2 w-2 rounded-full border border-violet-100"></span>
+
+            <div class="relative z-10">
+                <h1 class="text-4xl font-bold">Join us today!</h1>
+                <p class="mt-3 max-w-xs text-base leading-relaxed text-violet-100">
+                    Create your account and start your journey with Job Portal.
+                </p>
+            </div>
+        </section>
+
+        <!-- Signup form -->
+        <section class="flex items-center bg-white px-8 py-12 sm:px-11">
+            <div class="w-full">
+                <h2 class="text-center text-3xl font-bold text-[#4d4b52]">Create Account</h2>
+                <p class="mt-2 text-center text-sm text-gray-500">
+                    Fill in your details to get started.
+                </p>
+
+                {% if form.non_field_errors %}
+                    <div class="mt-5 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form method="post" class="mt-7 space-y-4">
+                    {% csrf_token %}
+
+                    {% for hidden_field in form.hidden_fields %}
+                        {{ hidden_field }}
+                    {% endfor %}
+
+                    {% for field in form.visible_fields %}
+                        <div>
+                            {% if field.field.widget.input_type == "radio" %}
+                                <p class="mb-2 text-sm font-medium text-gray-600">
+                                    {{ field.label }}
+                                </p>
+
+                                <div class="rounded-2xl border px-4 py-3 {% if field.errors %}border-red-400 bg-red-50{% else %}border-[#e3ddef] bg-white{% endif %} [&_ul]:m-0 [&_ul]:list-none [&_ul]:space-y-2 [&_label]:flex [&_label]:cursor-pointer [&_label]:items-center [&_label]:gap-3 [&_label]:text-sm [&_label]:text-[#4d4b52] [&_input]:h-4 [&_input]:w-4 [&_input]:accent-[#7852c4]">
+                                    {{ field }}
+                                </div>
+
+                            {% else %}
+                                <label for="{{ field.id_for_label }}" class="sr-only">
+                                    {{ field.label }}
+                                </label>
+
+                                <div class="relative">
+                                    {% if "password" in field.name %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V7.875a4.5 4.5 0 00-9 0V10.5m-.75 0h10.5a1.5 1.5 0 011.5 1.5v7.5a1.5 1.5 0 01-1.5 1.5H6.75a1.5 1.5 0 01-1.5-1.5V12a1.5 1.5 0 011.5-1.5z" />
+                                        </svg>
+
+                                    {% elif field.name == "email" %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5H4.5a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.966 1.846l-7.5 5.143a2.25 2.25 0 01-2.568 0l-7.5-5.143A2.25 2.25 0 012.25 6.993V6.75" />
+                                        </svg>
+
+                                    {% else %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.118a7.5 7.5 0 0115 0A17.933 17.933 0 0112 21.75a17.933 17.933 0 01-7.5-1.632z" />
+                                        </svg>
+                                    {% endif %}
+
+                                    {% if field.errors %}
+                                        {% render_field field class="w-full rounded-full border border-red-400 px-4 py-3 pl-10 text-sm text-gray-700 outline-none placeholder:text-gray-400 focus:border-red-400 focus:ring-2 focus:ring-red-200" placeholder=field.label %}
+                                    {% else %}
+                                        {% render_field field class="w-full rounded-full border border-[#e3ddef] px-4 py-3 pl-10 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder=field.label %}
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
+                            {% for error in field.errors %}
+                                <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                            {% endfor %}
+
+                            {% if "password" in field.name %}
+                                <p class="mt-1 text-xs text-gray-400">
+                                    Use at least 8 characters and avoid common passwords.
+                                </p>
+                            {% elif field.help_text %}
+                                <p class="mt-1 text-xs text-gray-400">
+                                    {{ field.help_text|striptags }}
+                                </p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    <button type="submit" class="w-full rounded-full bg-[#7852c4] py-3 text-sm font-semibold text-white shadow-md shadow-violet-300/50 transition hover:bg-[#6742ad] active:scale-[0.98]">
+                        Create Account
+                    </button>
+                </form>
+
+                <p class="mt-6 text-center text-xs text-gray-500">
+                    Already have an account?
+                    <a href="{% url 'accounts:login' %}" class="font-medium text-[#7852c4] hover:text-[#5f3ba9]">
+                        Sign In
+                    </a>
+                </p>
+            </div>
+        </section>
+    </div>
 </div>
 {% endblock %}
