@@ -23,6 +23,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     
     path("accounts/", include('accounts.urls')),
+    path("profiles/", include('profiles.urls')),
 ]
 if settings.DEBUG:
     # Include django_browser_reload URLs only in DEBUG mode
