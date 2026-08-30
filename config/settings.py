@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = "accounts.User"
 
-LOGIN_REDIRECT_URL = "accounts:signup"  # temporary, until profile_setup exists
+LOGIN_REDIRECT_URL = "profiles:profile_setup"
 LOGOUT_REDIRECT_URL = "accounts:login"
 
 # Application definition
