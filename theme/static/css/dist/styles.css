@@ -453,6 +453,9 @@
   .hidden {
     display: none;
   }
+  .inline-flex {
+    display: inline-flex;
+  }
   .table {
     display: table;
   }
@@ -608,6 +611,9 @@
   }
   .w-96 {
     width: calc(var(--spacing) * 96);
+  }
+  .w-fit {
+    width: fit-content;
   }
   .w-full {
     width: 100%;
@@ -1756,6 +1762,13 @@
       }
     }
   }
+  .hover\:bg-\[\#7852c4\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #7852c4;
+      }
+    }
+  }
   .hover\:bg-\[\#f4efff\] {
     &:hover {
       @media (hover: hover) {
@@ -1920,6 +1933,21 @@
   .sm\:grid-cols-2 {
     @media (width >= 40rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .sm\:flex-row {
+    @media (width >= 40rem) {
+      flex-direction: row;
+    }
+  }
+  .sm\:items-end {
+    @media (width >= 40rem) {
+      align-items: flex-end;
+    }
+  }
+  .sm\:justify-between {
+    @media (width >= 40rem) {
+      justify-content: space-between;
     }
   }
   .sm\:px-8 {

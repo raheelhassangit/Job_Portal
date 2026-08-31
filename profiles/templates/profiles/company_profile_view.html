@@ -73,18 +73,25 @@
 
         <!-- Company details -->
         <section class="px-7 py-10 sm:px-10 lg:px-12">
-            <header class="border-b border-[#e9e2f4] pb-6">
-                <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
-                    Company Overview
-                </p>
+            <header class="flex flex-col gap-4 border-b border-[#e9e2f4] pb-6 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
+                        Company Overview
+                    </p>
 
-                <h2 class="mt-2 text-3xl font-bold text-[#4d4b52]">
-                    {{ profile.company_name|default:profile.user.username }}
-                </h2>
+                    <h2 class="mt-2 text-3xl font-bold text-[#4d4b52]">
+                        {{ profile.company_name|default:profile.user.username }}
+                    </h2>
 
-                <p class="mt-2 text-sm text-gray-500">
-                    Company information visible to candidates.
-                </p>
+                    <p class="mt-2 text-sm text-gray-500">
+                        Company information visible to candidates.
+                    </p>
+                </div>
+
+                <a href="{% url 'profiles:profile_setup' %}"
+                class="inline-flex w-fit items-center rounded-lg bg-[#7852c4]/10 px-4 py-2 text-sm font-semibold text-[#7852c4] transition hover:bg-[#7852c4] hover:text-white">
+                    Edit Profile
+                </a>
             </header>
 
             <div class="space-y-8 py-8">
