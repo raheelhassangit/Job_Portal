@@ -3,19 +3,15 @@
 
 {% block title %}Set Up Candidate Profile | Job Portal{% endblock %}
 
-{% block navbar %}{% endblock %}
-
-{% block main_class %}min-h-screen w-full{% endblock %}
-
 {% block content %}
-<div class="min-h-screen bg-[#aa93d5] px-5 py-10">
-    <div class="mx-auto grid w-full max-w-6xl overflow-hidden rounded-2xl bg-white shadow-2xl shadow-violet-950/30 lg:grid-cols-[0.85fr_1.15fr]">
+<div class="min-h-[calc(100vh-72px)] bg-[#f5f0fa] px-5 py-8 sm:px-8">
+    <div class="mx-auto max-w-7xl">
 
-        <!-- Purple side panel -->
-        <section class="relative hidden overflow-hidden bg-[#754ec2] px-12 py-14 text-white lg:flex lg:flex-col lg:justify-between">
+        <!-- Decorative setup header -->
+        <header class="relative overflow-hidden rounded-3xl bg-[#754ec2] px-7 py-10 text-white shadow-xl shadow-violet-950/20 sm:px-10">
             <div class="absolute -left-24 -top-28 h-72 w-72 rounded-full bg-[#8f6ed2]/50"></div>
             <div class="absolute -right-24 -top-20 h-72 w-72 rotate-[-25deg] bg-[#5f3cb0]/50"></div>
-            <div class="absolute -bottom-28 -right-16 h-72 w-72 rounded-full border-[28px] border-[#9d85d6]/20"></div>
+            <div class="absolute -bottom-28 right-10 h-72 w-72 rounded-full border-[28px] border-[#9d85d6]/20"></div>
 
             <svg class="absolute left-0 top-0 h-36 w-28 opacity-50" viewBox="0 0 120 140" fill="none">
                 <path d="M0 10C55 15 15 65 70 70C112 74 60 115 105 140" stroke="#E4DBF5" stroke-width="1.2"/>
@@ -23,236 +19,364 @@
                 <path d="M20 0C75 20 35 52 90 63C120 69 82 105 120 125" stroke="#E4DBF5" stroke-width="1.2"/>
             </svg>
 
-            <svg class="absolute bottom-0 right-0 h-40 w-40 opacity-50" viewBox="0 0 160 160" fill="none">
-                <path d="M15 160C0 110 60 130 55 75C50 25 110 55 130 0" stroke="#E4DBF5" stroke-width="1.2"/>
-                <path d="M35 160C20 112 75 125 70 75C65 35 120 58 145 15" stroke="#E4DBF5" stroke-width="1.2"/>
-                <path d="M60 160C45 115 95 125 92 82C90 48 130 65 158 35" stroke="#E4DBF5" stroke-width="1.2"/>
-            </svg>
+            <span class="absolute bottom-9 left-20 text-xl font-light text-violet-200">+</span>
+            <span class="absolute right-28 top-10 h-2 w-2 rounded-full border border-violet-100"></span>
 
             <div class="relative z-10">
-                <span class="grid h-14 w-14 place-items-center rounded-2xl bg-white/15">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.118a7.5 7.5 0 0115 0A17.933 17.933 0 0112 21.75a17.933 17.933 0 01-7.5-1.632z" />
-                    </svg>
-                </span>
-
-                <h1 class="mt-8 text-4xl font-bold">Build your profile.</h1>
-                <p class="mt-3 max-w-sm text-base leading-relaxed text-violet-100">
-                    Tell employers about your skills, experience, and career goals.
-                </p>
-            </div>
-
-            <div class="relative z-10 mt-12 space-y-5">
-                <div class="flex items-center gap-3">
-                    <span class="grid h-8 w-8 place-items-center rounded-full bg-white text-sm font-bold text-[#754ec2]">1</span>
-                    <p class="text-sm text-violet-100">Account created</p>
-                </div>
-
-                <div class="flex items-center gap-3">
-                    <span class="grid h-8 w-8 place-items-center rounded-full border border-white/60 bg-white/10 text-sm font-bold text-white">2</span>
-                    <p class="text-sm font-semibold text-white">Complete your profile</p>
-                </div>
-
-                <div class="flex items-center gap-3">
-                    <span class="grid h-8 w-8 place-items-center rounded-full border border-white/30 bg-white/5 text-sm font-bold text-violet-200">3</span>
-                    <p class="text-sm text-violet-200">Apply for jobs</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Profile form -->
-        <section class="bg-white px-7 py-10 sm:px-10 lg:px-12">
-            <div class="mx-auto max-w-2xl">
-                <h2 class="text-3xl font-bold text-[#4d4b52]">Candidate Profile</h2>
-                <p class="mt-2 text-sm text-gray-500">
-                    Complete your details to help employers discover you.
+                <p class="text-sm font-semibold uppercase tracking-widest text-violet-200">
+                    Candidate Dashboard
                 </p>
 
-                {% if form.non_field_errors %}
-                    <div class="mt-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
-                        {% for error in form.non_field_errors %}
-                            <p>{{ error }}</p>
-                        {% endfor %}
+                <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+                    Set Up Your Candidate Profile
+                </h1>
+
+                <p class="mt-3 max-w-2xl text-sm leading-relaxed text-violet-100 sm:text-base">
+                    Add your skills, experience, and career information to help employers discover you.
+                </p>
+            </div>
+        </header>
+
+        <!-- Setup dashboard -->
+        <div class="mt-6 grid overflow-hidden rounded-3xl border border-[#dfd2ed] bg-white shadow-lg shadow-violet-950/10 lg:grid-cols-[310px_1fr]">
+
+            <!-- Setup sidebar -->
+            <aside class="relative overflow-hidden bg-[#2f1f4e] px-6 py-8 text-white sm:px-8">
+                <div class="absolute -right-20 -top-16 h-48 w-48 rounded-full bg-[#8d68d0]/25"></div>
+                <div class="absolute -bottom-24 -left-20 h-56 w-56 rounded-full border-[24px] border-[#9e82d6]/15"></div>
+
+                <svg class="absolute bottom-0 right-0 h-40 w-40 opacity-30" viewBox="0 0 160 160" fill="none">
+                    <path d="M15 160C0 110 60 130 55 75C50 25 110 55 130 0" stroke="#E4DBF5" stroke-width="1.2"/>
+                    <path d="M35 160C20 112 75 125 70 75C65 35 120 58 145 15" stroke="#E4DBF5" stroke-width="1.2"/>
+                    <path d="M60 160C45 115 95 125 92 82C90 48 130 65 158 35" stroke="#E4DBF5" stroke-width="1.2"/>
+                </svg>
+
+                <div class="relative z-10">
+                    <div class="grid h-16 w-16 place-items-center rounded-2xl bg-[#8d68d0] shadow-lg shadow-violet-950/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.118a7.5 7.5 0 0115 0A17.933 17.933 0 0112 21.75a17.933 17.933 0 01-7.5-1.632z" />
+                        </svg>
                     </div>
-                {% endif %}
 
-                <form method="post" enctype="multipart/form-data" class="mt-8 space-y-7">
-                    {% csrf_token %}
+                    <h2 class="mt-6 text-2xl font-bold">Profile Setup</h2>
+                    <p class="mt-2 text-sm leading-relaxed text-violet-100">
+                        A complete profile helps the right employers find you.
+                    </p>
 
-                    <section>
-                        <h3 class="mb-4 text-base font-semibold text-[#4d4b52]">About you</h3>
+                    <div class="mt-9 border-y border-white/10 py-6">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-violet-300">
+                            Setup Progress
+                        </p>
 
-                        <label for="{{ form.bio.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
-                            Bio
-                        </label>
+                        <div class="mt-5 space-y-5">
+                            <div class="flex items-start gap-3">
+                                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white text-xs font-bold text-[#754ec2]">
+                                    1
+                                </span>
 
-                        {% render_field form.bio class="min-h-32 w-full resize-y rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" rows="4" placeholder="Write a short introduction about yourself, your background, and your goals..." %}
+                                <div>
+                                    <p class="text-sm font-semibold text-white">Account Created</p>
+                                    <p class="mt-1 text-xs leading-relaxed text-violet-200">
+                                        Your Job Portal account is ready.
+                                    </p>
+                                </div>
+                            </div>
 
-                        {% for error in form.bio.errors %}
-                            <p class="mt-1 text-xs text-red-500">{{ error }}</p>
-                        {% endfor %}
-                    </section>
+                            <div class="flex items-start gap-3">
+                                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/60 bg-white/10 text-xs font-bold text-white">
+                                    2
+                                </span>
 
-                    <section class="grid gap-5 sm:grid-cols-2">
-                        <div>
-                            <label for="{{ form.skills.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
-                                Skills
-                            </label>
+                                <div>
+                                    <p class="text-sm font-semibold text-white">Complete Profile</p>
+                                    <p class="mt-1 text-xs leading-relaxed text-violet-200">
+                                        Add your career and contact details.
+                                    </p>
+                                </div>
+                            </div>
 
-                            {% render_field form.skills class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="Python, Django, SQL" %}
+                            <div class="flex items-start gap-3">
+                                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/20 bg-white/5 text-xs font-bold text-violet-200">
+                                    3
+                                </span>
 
-                            <p class="mt-1 text-xs text-gray-400">Separate your skills with commas.</p>
+                                <div>
+                                    <p class="text-sm font-medium text-violet-200">Start Applying</p>
+                                    <p class="mt-1 text-xs leading-relaxed text-violet-300">
+                                        Find jobs that match your skills.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                            {% for error in form.skills.errors %}
-                                <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                    <div class="mt-8">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-violet-300">
+                            Your Privacy
+                        </p>
+
+                        <p class="mt-3 text-sm leading-relaxed text-violet-100">
+                            You can update these profile details whenever you need to.
+                        </p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Form content -->
+            <main class="px-7 py-9 sm:px-10 lg:px-12">
+                <div class="max-w-2xl">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
+                        Candidate Information
+                    </p>
+
+                    <h2 class="mt-2 text-3xl font-bold text-[#4d4b52]">
+                        Build your professional profile
+                    </h2>
+
+                    <p class="mt-3 text-sm leading-relaxed text-gray-500">
+                        Give employers a clear picture of who you are and what you can bring to their team.
+                    </p>
+
+                    {% if form.non_field_errors %}
+                        <div class="mt-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+                            {% for error in form.non_field_errors %}
+                                <p>{{ error }}</p>
                             {% endfor %}
                         </div>
+                    {% endif %}
 
-                        <div>
-                            <label for="{{ form.location.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
-                                Location
+                    <form method="post" enctype="multipart/form-data" class="mt-8 space-y-8">
+                        {% csrf_token %}
+
+                        <!-- About -->
+                        <section>
+                            <label for="{{ form.bio.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                Bio
                             </label>
 
-                            {% render_field form.location class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="e.g. Lahore, Pakistan" %}
+                            {% render_field form.bio class="min-h-36 w-full resize-y rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" rows="5" placeholder="Write a short introduction about yourself, your background, and your career goals..." %}
 
-                            {% for error in form.location.errors %}
+                            {% for error in form.bio.errors %}
                                 <p class="mt-1 text-xs text-red-500">{{ error }}</p>
                             {% endfor %}
-                        </div>
-                    </section>
+                        </section>
 
-                    <section class="grid gap-5 sm:grid-cols-2">
-                        <div>
-                            <label for="{{ form.experience.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
-                                Experience
-                            </label>
-
-                            {% render_field form.experience class="min-h-28 w-full resize-y rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" rows="3" placeholder="Describe your work experience..." %}
-
-                            {% for error in form.experience.errors %}
-                                <p class="mt-1 text-xs text-red-500">{{ error }}</p>
-                            {% endfor %}
-                        </div>
-
-                        <div>
-                            <label for="{{ form.education.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
-                                Education
-                            </label>
-
-                            {% render_field form.education class="min-h-28 w-full resize-y rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" rows="3" placeholder="Degree, university, and graduation year..." %}
-
-                            {% for error in form.education.errors %}
-                                <p class="mt-1 text-xs text-red-500">{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                    </section>
-
-                    <section class="grid gap-5 sm:grid-cols-2">
-                        <div>
-                            <label for="{{ form.phone_number.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
-                                Phone Number
-                            </label>
-
-                            {% render_field form.phone_number class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="e.g. +92 300 1234567" %}
-
-                            {% for error in form.phone_number.errors %}
-                                <p class="mt-1 text-xs text-red-500">{{ error }}</p>
-                            {% endfor %}
-                        </div>
-
-                        <div>
-                            <label for="{{ form.linkedin_url.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
-                                LinkedIn URL
-                            </label>
-
-                            {% render_field form.linkedin_url class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="https://linkedin.com/in/yourprofile" %}
-
-                            {% for error in form.linkedin_url.errors %}
-                                <p class="mt-1 text-xs text-red-500">{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                    </section>
-
-                    <section>
-                        <h3 class="mb-4 text-base font-semibold text-[#4d4b52]">Documents</h3>
-
-                        <div class="grid gap-5 sm:grid-cols-2">
+                        <!-- Skills and location -->
+                        <section class="grid gap-5 border-y border-[#e9e2f4] py-8 sm:grid-cols-2">
                             <div>
-                                <input
-                                    type="file"
-                                    id="{{ form.profile_image.id_for_label }}"
-                                    name="{{ form.profile_image.html_name }}"
-                                    accept="image/*"
-                                    class="hidden"
-                                    data-file-input
-                                    data-file-name="image-file-name"
-                                >
-
-                                <label for="{{ form.profile_image.id_for_label }}" class="flex min-h-40 cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-[#b99ddd] bg-[#faf8ff] px-4 text-center transition hover:border-[#7852c4] hover:bg-[#f4efff]">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-3 h-9 w-9 text-[#7852c4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l-3 3m3-3l3 3M3.75 15.75a4.5 4.5 0 004.5 4.5h7.5a4.5 4.5 0 001.08-8.868A5.25 5.25 0 006.7 9.416 3.75 3.75 0 003.75 15.75z" />
-                                    </svg>
-
-                                    <span class="text-sm font-semibold text-[#4d4b52]">Profile Image</span>
-                                    <span id="image-file-name" class="mt-1 text-xs text-gray-500">
-                                        Click to choose a JPG or PNG image
-                                    </span>
+                                <label for="{{ form.skills.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                    Skills
                                 </label>
 
-                                {% for error in form.profile_image.errors %}
+                                {% render_field form.skills class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="Python, Django, SQL" %}
+
+                                <p class="mt-2 text-xs text-gray-400">
+                                    Separate your skills with commas.
+                                </p>
+
+                                {% for error in form.skills.errors %}
                                     <p class="mt-1 text-xs text-red-500">{{ error }}</p>
                                 {% endfor %}
                             </div>
 
                             <div>
-                                <input
-                                    type="file"
-                                    id="{{ form.resume.id_for_label }}"
-                                    name="{{ form.resume.html_name }}"
-                                    accept=".pdf,.doc,.docx"
-                                    class="hidden"
-                                    data-file-input
-                                    data-file-name="resume-file-name"
-                                >
-
-                                <label for="{{ form.resume.id_for_label }}" class="flex min-h-40 cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-[#b99ddd] bg-[#faf8ff] px-4 text-center transition hover:border-[#7852c4] hover:bg-[#f4efff]">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="mb-3 h-9 w-9 text-[#7852c4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l-3 3m3-3l3 3M3.75 15.75a4.5 4.5 0 004.5 4.5h7.5a4.5 4.5 0 001.08-8.868A5.25 5.25 0 006.7 9.416 3.75 3.75 0 003.75 15.75z" />
-                                    </svg>
-
-                                    <span class="text-sm font-semibold text-[#4d4b52]">Resume</span>
-                                    <span id="resume-file-name" class="mt-1 text-xs text-gray-500">
-                                        PDF, DOC, or DOCX file
-                                    </span>
+                                <label for="{{ form.location.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                    Location
                                 </label>
 
-                                {% for error in form.resume.errors %}
+                                {% render_field form.location class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="e.g. Lahore, Pakistan" %}
+
+                                {% for error in form.location.errors %}
                                     <p class="mt-1 text-xs text-red-500">{{ error }}</p>
                                 {% endfor %}
                             </div>
-                        </div>
-                    </section>
+                        </section>
 
-                    <button type="submit" class="w-full rounded-xl bg-[#7852c4] py-3.5 text-sm font-semibold text-white shadow-md shadow-violet-300/50 transition hover:bg-[#6742ad] active:scale-[0.98]">
-                        Save Candidate Profile
-                    </button>
-                </form>
-            </div>
-        </section>
+                        <!-- Career information -->
+                        <section>
+                            <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
+                                Career Background
+                            </p>
+
+                            <div class="mt-5 grid gap-5 sm:grid-cols-2">
+                                <div>
+                                    <label for="{{ form.experience.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                        Experience
+                                    </label>
+
+                                    {% render_field form.experience class="min-h-32 w-full resize-y rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" rows="4" placeholder="Describe your work experience..." %}
+
+                                    {% for error in form.experience.errors %}
+                                        <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div>
+                                    <label for="{{ form.education.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                        Education
+                                    </label>
+
+                                    {% render_field form.education class="min-h-32 w-full resize-y rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" rows="4" placeholder="Degree, university, and graduation year..." %}
+
+                                    {% for error in form.education.errors %}
+                                        <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Contact -->
+                        <section class="border-y border-[#e9e2f4] py-8">
+                            <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
+                                Contact Information
+                            </p>
+
+                            <div class="mt-5 grid gap-5 sm:grid-cols-2">
+                                <div>
+                                    <label for="{{ form.phone_number.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                        Phone Number
+                                    </label>
+
+                                    {% render_field form.phone_number class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="e.g. +92 300 1234567" %}
+
+                                    {% for error in form.phone_number.errors %}
+                                        <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div>
+                                    <label for="{{ form.linkedin_url.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                        LinkedIn URL
+                                    </label>
+
+                                    {% render_field form.linkedin_url class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="https://linkedin.com/in/yourprofile" %}
+
+                                    {% for error in form.linkedin_url.errors %}
+                                        <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Documents -->
+                        <section>
+                            <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
+                                Documents
+                            </p>
+
+                            <h3 class="mt-2 text-xl font-bold text-[#4d4b52]">
+                                Profile Image and Resume
+                            </h3>
+
+                            <p class="mt-2 text-sm text-gray-500">
+                                Upload a professional photo and your most recent resume.
+                            </p>
+
+                            <div class="mt-6 grid gap-5 sm:grid-cols-2">
+                                <div>
+                                    <input
+                                        type="file"
+                                        id="{{ form.profile_image.id_for_label }}"
+                                        name="{{ form.profile_image.html_name }}"
+                                        accept="image/*"
+                                        class="hidden"
+                                    >
+
+                                    <label for="{{ form.profile_image.id_for_label }}" class="flex min-h-44 cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-[#b99ddd] bg-[#faf8ff] px-5 text-center transition hover:border-[#7852c4] hover:bg-[#f4efff]">
+                                        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-[#7852c4]/10 text-[#7852c4]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l-3 3m3-3l3 3M3.75 15.75a4.5 4.5 0 004.5 4.5h7.5a4.5 4.5 0 001.08-8.868A5.25 5.25 0 006.7 9.416 3.75 3.75 0 003.75 15.75z" />
+                                            </svg>
+                                        </span>
+
+                                        <span class="mt-3 text-sm font-semibold text-[#4d4b52]">
+                                            Profile Image
+                                        </span>
+
+                                        <span id="image-file-name" class="mt-1 text-xs text-gray-500">
+                                            Click to choose a JPG or PNG image
+                                        </span>
+                                    </label>
+
+                                    {% for error in form.profile_image.errors %}
+                                        <p class="mt-2 text-xs text-red-500">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div>
+                                    <input
+                                        type="file"
+                                        id="{{ form.resume.id_for_label }}"
+                                        name="{{ form.resume.html_name }}"
+                                        accept=".pdf,.doc,.docx"
+                                        class="hidden"
+                                    >
+
+                                    <label for="{{ form.resume.id_for_label }}" class="flex min-h-44 cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-[#b99ddd] bg-[#faf8ff] px-5 text-center transition hover:border-[#7852c4] hover:bg-[#f4efff]">
+                                        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-[#7852c4]/10 text-[#7852c4]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l-3 3m3-3l3 3M3.75 15.75a4.5 4.5 0 004.5 4.5h7.5a4.5 4.5 0 001.08-8.868A5.25 5.25 0 006.7 9.416 3.75 3.75 0 003.75 15.75z" />
+                                            </svg>
+                                        </span>
+
+                                        <span class="mt-3 text-sm font-semibold text-[#4d4b52]">
+                                            Resume
+                                        </span>
+
+                                        <span id="resume-file-name" class="mt-1 text-xs text-gray-500">
+                                            PDF, DOC, or DOCX file
+                                        </span>
+                                    </label>
+
+                                    {% for error in form.resume.errors %}
+                                        <p class="mt-2 text-xs text-red-500">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="flex flex-col gap-4 border-t border-[#e9e2f4] pt-8 sm:flex-row sm:items-center sm:justify-between">
+                            <p class="text-xs leading-relaxed text-gray-500">
+                                Your information remains private and can be edited later.
+                            </p>
+
+                            <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#7852c4] px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-violet-300/50 transition hover:bg-[#6742ad] active:scale-[0.98]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3.75h8.689a2.25 2.25 0 011.591.659l2.561 2.561a2.25 2.25 0 01.659 1.591v11.689a2.25 2.25 0 01-2.25 2.25H6.75a2.25 2.25 0 01-2.25-2.25V6A2.25 2.25 0 016.75 3.75z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3.75v5.5h7.5v-5.5M8.25 20.25v-6h7.5v6" />
+                                </svg>
+                                Save Candidate Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
     </div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    document.querySelectorAll("[data-file-input]").forEach((input) => {
-        input.addEventListener("change", () => {
-            const fileName = document.getElementById(input.dataset.fileName);
+    const profileImageInput = document.getElementById("{{ form.profile_image.id_for_label }}");
+    const resumeInput = document.getElementById("{{ form.resume.id_for_label }}");
+    const imageFileName = document.getElementById("image-file-name");
+    const resumeFileName = document.getElementById("resume-file-name");
 
-            if (input.files.length && fileName) {
-                fileName.textContent = input.files[0].name;
+    if (profileImageInput && imageFileName) {
+        profileImageInput.addEventListener("change", () => {
+            if (profileImageInput.files.length) {
+                imageFileName.textContent = profileImageInput.files[0].name;
             }
         });
-    });
+    }
+
+    if (resumeInput && resumeFileName) {
+        resumeInput.addEventListener("change", () => {
+            if (resumeInput.files.length) {
+                resumeFileName.textContent = resumeInput.files[0].name;
+            }
+        });
+    }
 </script>
 {% endblock %}

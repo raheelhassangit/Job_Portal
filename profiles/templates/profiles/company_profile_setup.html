@@ -1,265 +1,323 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 
 {% block title %}Set Up Company Profile | Job Portal{% endblock %}
 
-{% block nav_links %}
-    <a href="#" class="hidden transition hover:text-violet-300 md:inline">Browse Jobs</a>
-    <a href="#" class="hidden transition hover:text-violet-300 md:inline">Find Candidates</a>
-    <a href="#" class="hidden transition hover:text-violet-300 md:inline">My Jobs</a>
-    <a href="#" class="hidden transition hover:text-violet-300 md:inline">Dashboard</a>
-{% endblock %}
-
 {% block content %}
-<div class="mx-auto max-w-6xl px-4 py-10 md:px-6">
-    <header class="mb-7 flex flex-col gap-5 md:flex-row md:items-center">
-        <span class="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-gradient-to-br from-violet-600/70 to-purple-900/80 text-violet-300 shadow-xl shadow-violet-900/30">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M5.25 21V6.75A2.25 2.25 0 017.5 4.5h6A2.25 2.25 0 0115.75 6.75V21M8.25 8.25h.008v.008H8.25V8.25zm0 3h.008v.008H8.25v-.008zm0 3h.008v.008H8.25v-.008zm3-6h.008v.008h-.008V8.25zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm3-3h.008v.008h-.008v-.008zM8.25 21v-3.75h3V21" />
+<div class="min-h-[calc(100vh-72px)] bg-[#f5f0fa] px-5 py-8 sm:px-8">
+    <div class="mx-auto max-w-7xl">
+
+        <!-- Decorative setup header -->
+        <header class="relative overflow-hidden rounded-3xl bg-[#754ec2] px-7 py-10 text-white shadow-xl shadow-violet-950/20 sm:px-10">
+            <div class="absolute -left-24 -top-28 h-72 w-72 rounded-full bg-[#8f6ed2]/50"></div>
+            <div class="absolute -right-24 -top-20 h-72 w-72 rotate-[-25deg] bg-[#5f3cb0]/50"></div>
+            <div class="absolute -bottom-28 right-10 h-72 w-72 rounded-full border-[28px] border-[#9d85d6]/20"></div>
+
+            <svg class="absolute left-0 top-0 h-36 w-28 opacity-50" viewBox="0 0 120 140" fill="none">
+                <path d="M0 10C55 15 15 65 70 70C112 74 60 115 105 140" stroke="#E4DBF5" stroke-width="1.2"/>
+                <path d="M8 0C66 12 25 58 80 67C115 72 70 112 115 135" stroke="#E4DBF5" stroke-width="1.2"/>
+                <path d="M20 0C75 20 35 52 90 63C120 69 82 105 120 125" stroke="#E4DBF5" stroke-width="1.2"/>
             </svg>
-        </span>
 
-        <div>
-            <h1 class="text-3xl font-bold md:text-4xl">Set Up Your Company Profile</h1>
-            <p class="mt-2 text-slate-400">
-                Add your company details to attract top talent and let candidates learn more about your organization.
-            </p>
-        </div>
-    </header>
+            <span class="absolute bottom-9 left-20 text-xl font-light text-violet-200">+</span>
+            <span class="absolute right-28 top-10 h-2 w-2 rounded-full border border-violet-100"></span>
 
-    <section class="rounded-2xl border border-violet-300/15 bg-white/[0.035] p-5 shadow-2xl shadow-black/20 backdrop-blur-md md:p-8">
-        <div class="mb-7 flex items-center gap-4 border-b border-violet-300/10 pb-6">
-            <span class="grid h-12 w-12 place-items-center rounded-full bg-violet-600/30 text-violet-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 7h-3V5a2 2 0 00-2-2H9a2 2 0 00-2 2v2H4a1 1 0 00-1 1v11a1 1 0 001 1h16a1 1 0 001-1V8a1 1 0 00-1-1zM9 5h6v2H9V5z" />
-                </svg>
-            </span>
+            <div class="relative z-10">
+                <p class="text-sm font-semibold uppercase tracking-widest text-violet-200">
+                    Company Dashboard
+                </p>
 
-            <div>
-                <h2 class="text-xl font-semibold">Company Information</h2>
-                <p class="mt-1 text-sm text-slate-400">
-                    Provide accurate information to build trust with candidates.
+                <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+                    Set Up Your Company Profile
+                </h1>
+
+                <p class="mt-3 max-w-2xl text-sm leading-relaxed text-violet-100 sm:text-base">
+                    Add accurate company information so talented candidates can discover your organization.
                 </p>
             </div>
-        </div>
+        </header>
 
-        <form method="post" enctype="multipart/form-data" class="space-y-7">
-            {% csrf_token %}
+        <!-- Setup dashboard -->
+        <div class="mt-6 grid overflow-hidden rounded-3xl border border-[#dfd2ed] bg-white shadow-lg shadow-violet-950/10 lg:grid-cols-[310px_1fr]">
 
-            {% if form.non_field_errors %}
-                <div class="rounded-lg border border-red-400/40 bg-red-500/10 p-4 text-sm text-red-200">
-                    {{ form.non_field_errors }}
-                </div>
-            {% endif %}
+            <!-- Setup sidebar -->
+            <aside class="relative overflow-hidden bg-[#2f1f4e] px-6 py-8 text-white sm:px-8">
+                <div class="absolute -right-20 -top-16 h-48 w-48 rounded-full bg-[#8d68d0]/25"></div>
+                <div class="absolute -bottom-24 -left-20 h-56 w-56 rounded-full border-[24px] border-[#9e82d6]/15"></div>
 
-            <div class="grid gap-6 md:grid-cols-2">
-                <div>
-                    <label for="{{ form.company_name.id_for_label }}" class="mb-2 block text-sm font-semibold">
-                        Company Name <span class="text-violet-300">*</span>
-                    </label>
+                <svg class="absolute bottom-0 right-0 h-40 w-40 opacity-30" viewBox="0 0 160 160" fill="none">
+                    <path d="M15 160C0 110 60 130 55 75C50 25 110 55 130 0" stroke="#E4DBF5" stroke-width="1.2"/>
+                    <path d="M35 160C20 112 75 125 70 75C65 35 120 58 145 15" stroke="#E4DBF5" stroke-width="1.2"/>
+                    <path d="M60 160C45 115 95 125 92 82C90 48 130 65 158 35" stroke="#E4DBF5" stroke-width="1.2"/>
+                </svg>
 
-                    <input
-                        type="text"
-                        id="{{ form.company_name.id_for_label }}"
-                        name="{{ form.company_name.html_name }}"
-                        value="{{ form.company_name.value|default_if_none:'' }}"
-                        placeholder="e.g. TechCorp Solutions"
-                        class="w-full rounded-xl border {% if form.company_name.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
-                    >
-
-                    {% for error in form.company_name.errors %}
-                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
-                    {% endfor %}
-                </div>
-
-                <div>
-                    <label for="{{ form.website.id_for_label }}" class="mb-2 block text-sm font-semibold">
-                        Website
-                    </label>
-
-                    <input
-                        type="url"
-                        id="{{ form.website.id_for_label }}"
-                        name="{{ form.website.html_name }}"
-                        value="{{ form.website.value|default_if_none:'' }}"
-                        placeholder="https://www.yourcompany.com"
-                        class="w-full rounded-xl border {% if form.website.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
-                    >
-
-                    {% for error in form.website.errors %}
-                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div>
-                <label for="{{ form.description.id_for_label }}" class="mb-2 block text-sm font-semibold">
-                    Description <span class="text-violet-300">*</span>
-                </label>
-
-                <textarea
-                    id="{{ form.description.id_for_label }}"
-                    name="{{ form.description.html_name }}"
-                    rows="5"
-                    placeholder="Describe your company, mission, vision and what makes your workplace unique..."
-                    class="w-full resize-none rounded-xl border {% if form.description.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
-                >{{ form.description.value|default_if_none:"" }}</textarea>
-
-                {% for error in form.description.errors %}
-                    <p class="mt-1 text-xs text-red-300">{{ error }}</p>
-                {% endfor %}
-            </div>
-
-            <div class="grid gap-6 md:grid-cols-2">
-                <div>
-                    <label for="{{ form.industry.id_for_label }}" class="mb-2 block text-sm font-semibold">
-                        Industry <span class="text-violet-300">*</span>
-                    </label>
-
-                    <input
-                        list="industry-list"
-                        type="text"
-                        id="{{ form.industry.id_for_label }}"
-                        name="{{ form.industry.html_name }}"
-                        value="{{ form.industry.value|default_if_none:'' }}"
-                        placeholder="Select or enter an industry"
-                        class="w-full rounded-xl border {% if form.industry.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
-                    >
-
-                    <datalist id="industry-list">
-                        <option value="Information Technology">
-                        <option value="Software Development">
-                        <option value="Education">
-                        <option value="Healthcare">
-                        <option value="Finance">
-                        <option value="Marketing">
-                        <option value="E-commerce">
-                        <option value="Manufacturing">
-                    </datalist>
-
-                    {% for error in form.industry.errors %}
-                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
-                    {% endfor %}
-                </div>
-
-                <div>
-                    <label for="{{ form.company_size.id_for_label }}" class="mb-2 block text-sm font-semibold">
-                        Company Size <span class="text-violet-300">*</span>
-                    </label>
-
-                    <select
-                        id="{{ form.company_size.id_for_label }}"
-                        name="{{ form.company_size.html_name }}"
-                        class="w-full rounded-xl border {% if form.company_size.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm text-slate-200 outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
-                    >
-                        <option value="">Select company size</option>
-
-                        {% for value, label in form.company_size.field.choices %}
-                            <option value="{{ value }}" {% if form.company_size.value == value %}selected{% endif %}>
-                                {{ label }}
-                            </option>
-                        {% endfor %}
-                    </select>
-
-                    {% for error in form.company_size.errors %}
-                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
-                    {% endfor %}
-                </div>
-
-                <div>
-                    <label for="{{ form.location.id_for_label }}" class="mb-2 block text-sm font-semibold">
-                        Location <span class="text-violet-300">*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        id="{{ form.location.id_for_label }}"
-                        name="{{ form.location.html_name }}"
-                        value="{{ form.location.value|default_if_none:'' }}"
-                        placeholder="e.g. Lahore, Pakistan"
-                        class="w-full rounded-xl border {% if form.location.errors %}border-red-400{% else %}border-violet-400/30{% endif %} bg-violet-950/30 px-4 py-3 text-sm outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-4 focus:ring-violet-500/10"
-                    >
-
-                    {% for error in form.location.errors %}
-                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
-                    {% endfor %}
-                </div>
-
-                <div>
-                    <label for="{{ form.profile_image.id_for_label }}" class="mb-2 block text-sm font-semibold">
-                        Company Logo / Profile Image
-                    </label>
-
-                    <input
-                        type="file"
-                        id="{{ form.profile_image.id_for_label }}"
-                        name="{{ form.profile_image.html_name }}"
-                        accept="image/*"
-                        class="hidden"
-                        data-file-input
-                        data-file-name="company-image-name"
-                    >
-
-                    <label for="{{ form.profile_image.id_for_label }}" class="flex min-h-36 cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-violet-400/40 bg-violet-950/20 p-4 text-center transition hover:border-violet-300 hover:bg-violet-500/10">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mb-3 h-10 w-10 text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l-3 3m3-3l3 3M3.75 15.75a4.5 4.5 0 004.5 4.5h7.5a4.5 4.5 0 001.08-8.868A5.25 5.25 0 006.7 9.416 3.75 3.75 0 003.75 15.75z" />
+                <div class="relative z-10">
+                    <div class="grid h-16 w-16 place-items-center rounded-2xl bg-[#8d68d0] shadow-lg shadow-violet-950/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M5.25 21V6.75A2.25 2.25 0 017.5 4.5h6A2.25 2.25 0 0115.75 6.75V21M8.25 8.25h.008v.008H8.25V8.25zm0 3h.008v.008H8.25v-.008zm0 3h.008v.008H8.25v-.008zm3-6h.008v.008h-.008V8.25zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm3-3h.008v.008h-.008v-.008zM8.25 21v-3.75h3V21" />
                         </svg>
+                    </div>
 
-                        <span id="company-image-name" class="text-sm font-medium text-slate-100">
-                            Upload company logo
-                        </span>
-                        <span class="mt-1 text-xs text-slate-400">JPG or PNG, up to 5MB</span>
-                    </label>
-
-                    <p class="mt-2 text-xs text-slate-400">
-                        This logo will be visible to candidates on your company profile.
+                    <h2 class="mt-6 text-2xl font-bold">Company Setup</h2>
+                    <p class="mt-2 text-sm leading-relaxed text-violet-100">
+                        Complete these details to create a professional company presence.
                     </p>
 
-                    {% for error in form.profile_image.errors %}
-                        <p class="mt-1 text-xs text-red-300">{{ error }}</p>
-                    {% endfor %}
-                </div>
-            </div>
+                    <div class="mt-9 border-y border-white/10 py-6">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-violet-300">
+                            Setup Progress
+                        </p>
 
-            <div class="flex flex-col gap-5 border-t border-violet-300/10 pt-6 md:flex-row md:items-center md:justify-between">
-                <div class="flex items-center gap-3">
-                    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-violet-600/20 text-violet-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.75l7.5 3.75v4.875c0 4.5-3.075 7.95-7.5 9.375-4.425-1.425-7.5-4.875-7.5-9.375V7.5L12 3.75z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
-                        </svg>
-                    </span>
+                        <div class="mt-5 space-y-5">
+                            <div class="flex items-start gap-3">
+                                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white text-xs font-bold text-[#754ec2]">
+                                    1
+                                </span>
 
-                    <div>
-                        <p class="text-sm font-medium">Your information is secure</p>
-                        <p class="mt-1 text-xs text-slate-400">
-                            We never share your data with anyone.
+                                <div>
+                                    <p class="text-sm font-semibold text-white">Company Information</p>
+                                    <p class="mt-1 text-xs leading-relaxed text-violet-200">
+                                        Add the basics about your organization.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/30 bg-white/10 text-xs font-bold text-violet-100">
+                                    2
+                                </span>
+
+                                <div>
+                                    <p class="text-sm font-medium text-violet-100">Company Branding</p>
+                                    <p class="mt-1 text-xs leading-relaxed text-violet-300">
+                                        Upload a recognizable company logo.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/20 bg-white/5 text-xs font-bold text-violet-200">
+                                    3
+                                </span>
+
+                                <div>
+                                    <p class="text-sm font-medium text-violet-200">Start Hiring</p>
+                                    <p class="mt-1 text-xs leading-relaxed text-violet-300">
+                                        Create jobs and connect with candidates.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-violet-300">
+                            Privacy
+                        </p>
+                        <p class="mt-3 text-sm leading-relaxed text-violet-100">
+                            Your company information can be updated anytime from your dashboard.
                         </p>
                     </div>
                 </div>
+            </aside>
 
-                <button type="submit" class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-violet-600 via-purple-500 to-violet-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-violet-900/40 transition hover:brightness-110">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3.75h8.689a2.25 2.25 0 011.591.659l2.561 2.561a2.25 2.25 0 01.659 1.591v11.689a2.25 2.25 0 01-2.25 2.25H6.75a2.25 2.25 0 01-2.25-2.25V6A2.25 2.25 0 016.75 3.75z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3.75v5.5h7.5v-5.5M8.25 20.25v-6h7.5v6" />
-                    </svg>
-                    Save Company Profile
-                </button>
-            </div>
-        </form>
-    </section>
+            <!-- Form content -->
+            <main class="px-7 py-9 sm:px-10 lg:px-12">
+                <div class="max-w-2xl">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
+                        Company Information
+                    </p>
+
+                    <h2 class="mt-2 text-3xl font-bold text-[#4d4b52]">
+                        Tell candidates about your company
+                    </h2>
+
+                    <p class="mt-3 text-sm leading-relaxed text-gray-500">
+                        Accurate information helps candidates understand your culture, industry, and opportunities.
+                    </p>
+
+                    {% if form.non_field_errors %}
+                        <div class="mt-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+                            {% for error in form.non_field_errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <form method="post" enctype="multipart/form-data" class="mt-8 space-y-8">
+                        {% csrf_token %}
+
+                        <section class="grid gap-5 sm:grid-cols-2">
+                            <div>
+                                <label for="{{ form.company_name.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                    Company Name
+                                </label>
+
+                                {% render_field form.company_name class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="e.g. TechCorp Solutions" %}
+
+                                {% for error in form.company_name.errors %}
+                                    <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+
+                            <div>
+                                <label for="{{ form.website.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                    Website
+                                </label>
+
+                                {% render_field form.website class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="https://yourcompany.com" %}
+
+                                {% for error in form.website.errors %}
+                                    <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </section>
+
+                        <section class="border-y border-[#e9e2f4] py-8">
+                            <label for="{{ form.description.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                Company Description
+                            </label>
+
+                            {% render_field form.description class="min-h-36 w-full resize-y rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" rows="5" placeholder="Describe your company, mission, vision, culture, and what makes your workplace unique..." %}
+
+                            <p class="mt-2 text-xs text-gray-400">
+                                Share a clear, candidate-friendly introduction to your organization.
+                            </p>
+
+                            {% for error in form.description.errors %}
+                                <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                            {% endfor %}
+                        </section>
+
+                        <section>
+                            <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
+                                Organization Details
+                            </p>
+
+                            <div class="mt-5 grid gap-5 sm:grid-cols-2">
+                                <div>
+                                    <label for="{{ form.industry.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                        Industry
+                                    </label>
+
+                                    {% render_field form.industry class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" list="industry-list" placeholder="Select or enter an industry" %}
+
+                                    <datalist id="industry-list">
+                                        <option value="Information Technology">
+                                        <option value="Software Development">
+                                        <option value="Education">
+                                        <option value="Healthcare">
+                                        <option value="Finance">
+                                        <option value="Marketing">
+                                        <option value="E-commerce">
+                                        <option value="Manufacturing">
+                                    </datalist>
+
+                                    {% for error in form.industry.errors %}
+                                        <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div>
+                                    <label for="{{ form.company_size.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                        Company Size
+                                    </label>
+
+                                    {% render_field form.company_size class="w-full rounded-xl border border-[#e3ddef] bg-white px-4 py-3 text-sm text-gray-700 outline-none transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" %}
+
+                                    {% for error in form.company_size.errors %}
+                                        <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="sm:col-span-2">
+                                    <label for="{{ form.location.id_for_label }}" class="mb-2 block text-sm font-medium text-gray-600">
+                                        Company Location
+                                    </label>
+
+                                    {% render_field form.location class="w-full rounded-xl border border-[#e3ddef] px-4 py-3 text-sm text-gray-700 outline-none placeholder:text-gray-400 transition focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" placeholder="e.g. Lahore, Pakistan" %}
+
+                                    {% for error in form.location.errors %}
+                                        <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="border-t border-[#e9e2f4] pt-8">
+                            <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
+                                Company Branding
+                            </p>
+
+                            <h3 class="mt-2 text-xl font-bold text-[#4d4b52]">
+                                Company Logo
+                            </h3>
+
+                            <p class="mt-2 text-sm text-gray-500">
+                                Use a clear company logo so candidates can recognize your organization.
+                            </p>
+
+                            <input
+                                type="file"
+                                id="{{ form.profile_image.id_for_label }}"
+                                name="{{ form.profile_image.html_name }}"
+                                accept="image/*"
+                                class="hidden"
+                            >
+
+                            <label for="{{ form.profile_image.id_for_label }}" class="mt-5 flex min-h-44 cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-[#b99ddd] bg-[#faf8ff] px-5 text-center transition hover:border-[#7852c4] hover:bg-[#f4efff]">
+                                <span class="grid h-12 w-12 place-items-center rounded-2xl bg-[#7852c4]/10 text-[#7852c4]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l-3 3m3-3l3 3M3.75 15.75a4.5 4.5 0 004.5 4.5h7.5a4.5 4.5 0 001.08-8.868A5.25 5.25 0 006.7 9.416 3.75 3.75 0 003.75 15.75z" />
+                                    </svg>
+                                </span>
+
+                                <span id="company-image-name" class="mt-3 text-sm font-semibold text-[#4d4b52]">
+                                    Upload your company logo
+                                </span>
+
+                                <span class="mt-1 text-xs text-gray-500">
+                                    JPG or PNG image, up to 5MB
+                                </span>
+                            </label>
+
+                            {% for error in form.profile_image.errors %}
+                                <p class="mt-2 text-xs text-red-500">{{ error }}</p>
+                            {% endfor %}
+                        </section>
+
+                        <div class="flex flex-col gap-4 border-t border-[#e9e2f4] pt-8 sm:flex-row sm:items-center sm:justify-between">
+                            <p class="text-xs leading-relaxed text-gray-500">
+                                Your company details are secure and can be changed later.
+                            </p>
+
+                            <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#7852c4] px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-violet-300/50 transition hover:bg-[#6742ad] active:scale-[0.98]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3.75h8.689a2.25 2.25 0 011.591.659l2.561 2.561a2.25 2.25 0 01.659 1.591v11.689a2.25 2.25 0 01-2.25 2.25H6.75a2.25 2.25 0 01-2.25-2.25V6A2.25 2.25 0 016.75 3.75z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3.75v5.5h7.5v-5.5M8.25 20.25v-6h7.5v6" />
+                                </svg>
+                                Save Company Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    document.querySelectorAll("[data-file-input]").forEach((input) => {
-        input.addEventListener("change", () => {
-            const fileName = document.getElementById(input.dataset.fileName);
+    const companyImageInput = document.getElementById("{{ form.profile_image.id_for_label }}");
+    const companyImageName = document.getElementById("company-image-name");
 
-            if (input.files.length && fileName) {
-                fileName.textContent = input.files[0].name;
+    if (companyImageInput && companyImageName) {
+        companyImageInput.addEventListener("change", () => {
+            if (companyImageInput.files.length) {
+                companyImageName.textContent = companyImageInput.files[0].name;
             }
         });
-    });
+    }
 </script>
 {% endblock %}
