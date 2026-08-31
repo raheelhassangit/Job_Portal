@@ -24,3 +24,22 @@ def profile_setup(request):
         form = form_class(instance=profile)
 
     return render(request, template_name, {"form": form})
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+
+@login_required
+def profile_view(request):
+    if request.user.role == "candidate":
+        return render(
+            request,
+            "profiles/candidate_profile_view.html",
+            {"profile": request.user.candidate_profile},
+        )
+    else:
+        return render(
+            request,
+            "profiles/company_profile_view.html",
+            {"profile": request.user.company_profile},
+        )
