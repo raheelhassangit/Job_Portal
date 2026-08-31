@@ -19,7 +19,7 @@ def profile_setup(request):
         form = form_class(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-            return redirect("profiles:profile_setup")
+            return redirect("profiles:profile_view")
     else:
         form = form_class(instance=profile)
 
