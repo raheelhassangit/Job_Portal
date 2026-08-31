@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ profile.company_name|default:profile.user.username }} | Job Portal{% endblock %}
+{% block title %}Company Dashboard | Job Portal{% endblock %}
 
 {% block nav_links %}
     <a href="#" class="hidden transition hover:text-violet-300 md:inline">Browse Jobs</a>
@@ -9,13 +9,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="min-h-[calc(100vh-73px)] bg-[#aa93d5] px-5 py-10">
-    <div class="mx-auto grid w-full max-w-6xl overflow-hidden rounded-2xl bg-white shadow-2xl shadow-violet-950/30 lg:grid-cols-[0.8fr_1.2fr]">
+<div class="min-h-[calc(100vh-73px)] bg-[#f5f0fa] px-5 py-8 sm:px-8">
+    <div class="mx-auto max-w-7xl">
 
-        <!-- Company summary -->
-        <aside class="relative overflow-hidden bg-[#754ec2] px-8 py-12 text-white sm:px-12">
+        <!-- Decorative dashboard header -->
+        <header class="relative overflow-hidden rounded-3xl bg-[#754ec2] px-7 py-10 text-white shadow-xl shadow-violet-950/20 sm:px-10">
             <div class="absolute -left-24 -top-28 h-72 w-72 rounded-full bg-[#8f6ed2]/50"></div>
-            <div class="absolute -right-24 -bottom-24 h-72 w-72 rounded-full border-[28px] border-[#9d85d6]/20"></div>
+            <div class="absolute -right-24 -top-20 h-72 w-72 rotate-[-25deg] bg-[#5f3cb0]/50"></div>
+            <div class="absolute -bottom-28 right-10 h-72 w-72 rounded-full border-[28px] border-[#9d85d6]/20"></div>
 
             <svg class="absolute left-0 top-0 h-36 w-28 opacity-50" viewBox="0 0 120 140" fill="none">
                 <path d="M0 10C55 15 15 65 70 70C112 74 60 115 105 140" stroke="#E4DBF5" stroke-width="1.2"/>
@@ -23,126 +24,175 @@
                 <path d="M20 0C75 20 35 52 90 63C120 69 82 105 120 125" stroke="#E4DBF5" stroke-width="1.2"/>
             </svg>
 
-            <div class="relative z-10 flex h-full flex-col items-center text-center">
-                {% if profile.profile_image %}
-                    <img
-                        src="{{ profile.profile_image.url }}"
-                        alt="{{ profile.company_name }}"
-                        class="h-32 w-32 rounded-2xl border-4 border-white/40 bg-white object-cover shadow-xl"
-                    >
-                {% else %}
-                    <div class="grid h-32 w-32 place-items-center rounded-2xl border-4 border-white/30 bg-white/15">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M5.25 21V6.75A2.25 2.25 0 017.5 4.5h6A2.25 2.25 0 0115.75 6.75V21M8.25 8.25h.008v.008H8.25V8.25zm0 3h.008v.008H8.25v-.008zm0 3h.008v.008H8.25v-.008zm3-6h.008v.008h-.008V8.25zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm3-3h.008v.008h-.008v-.008zM8.25 21v-3.75h3V21" />
-                        </svg>
-                    </div>
-                {% endif %}
+            <span class="absolute bottom-9 left-20 text-xl font-light text-violet-200">+</span>
+            <span class="absolute right-28 top-10 h-2 w-2 rounded-full border border-violet-100"></span>
 
-                <span class="mt-6 rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-violet-100">
-                    Company
-                </span>
-
-                <h1 class="mt-4 text-3xl font-bold">
-                    {{ profile.company_name|default:profile.user.username }}
-                </h1>
-
-                {% if profile.industry %}
-                    <p class="mt-2 text-sm text-violet-100">{{ profile.industry }}</p>
-                {% endif %}
-
-                {% if profile.location %}
-                    <p class="mt-4 flex items-center gap-2 text-sm text-violet-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 12a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" />
-                        </svg>
-                        {{ profile.location }}
-                    </p>
-                {% endif %}
-
-                <div class="mt-10 w-full border-t border-white/20 pt-7 text-left">
-                    <p class="text-xs font-semibold uppercase tracking-widest text-violet-200">
-                        Company Profile
-                    </p>
-                    <p class="mt-2 text-sm text-white">
-                        Share your company story and attract exceptional talent.
-                    </p>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Company details -->
-        <section class="px-7 py-10 sm:px-10 lg:px-12">
-            <header class="flex flex-col gap-4 border-b border-[#e9e2f4] pb-6 sm:flex-row sm:items-end sm:justify-between">
+            <div class="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                 <div>
-                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
-                        Company Overview
+                    <p class="text-sm font-semibold uppercase tracking-widest text-violet-200">
+                        Company Dashboard
                     </p>
 
-                    <h2 class="mt-2 text-3xl font-bold text-[#4d4b52]">
+                    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
                         {{ profile.company_name|default:profile.user.username }}
-                    </h2>
+                    </h1>
 
-                    <p class="mt-2 text-sm text-gray-500">
-                        Company information visible to candidates.
+                    <p class="mt-3 max-w-xl text-sm leading-relaxed text-violet-100 sm:text-base">
+                        Build trust with candidates by keeping your company story accurate and complete.
                     </p>
                 </div>
 
                 <a href="{% url 'profiles:profile_setup' %}"
-                class="inline-flex w-fit items-center rounded-lg bg-[#7852c4]/10 px-4 py-2 text-sm font-semibold text-[#7852c4] transition hover:bg-[#7852c4] hover:text-white">
+                   class="inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#754ec2] shadow-lg shadow-violet-950/30 transition hover:bg-violet-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.688-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13l-3.164.95.95-3.164a4.5 4.5 0 011.13-1.897l9.261-9.261z" />
+                    </svg>
                     Edit Profile
                 </a>
-            </header>
+            </div>
+        </header>
 
-            <div class="space-y-8 py-8">
-                <section>
-                    <h3 class="text-base font-semibold text-[#4d4b52]">About the Company</h3>
+        <!-- Dashboard area -->
+        <div class="mt-6 grid overflow-hidden rounded-3xl border border-[#dfd2ed] bg-white shadow-lg shadow-violet-950/10 lg:grid-cols-[310px_1fr]">
 
-                    <div class="mt-3 rounded-xl border border-[#e3ddef] bg-[#faf8ff] p-5 text-sm leading-relaxed text-gray-600">
+            <!-- Attractive, separate sidebar -->
+            <aside class="relative overflow-hidden bg-[#2f1f4e] px-6 py-8 text-white sm:px-8">
+                <div class="absolute -right-20 -top-16 h-48 w-48 rounded-full bg-[#8d68d0]/25"></div>
+                <div class="absolute -bottom-24 -left-20 h-56 w-56 rounded-full border-[24px] border-[#9e82d6]/15"></div>
+
+                <svg class="absolute bottom-0 right-0 h-40 w-40 opacity-30" viewBox="0 0 160 160" fill="none">
+                    <path d="M15 160C0 110 60 130 55 75C50 25 110 55 130 0" stroke="#E4DBF5" stroke-width="1.2"/>
+                    <path d="M35 160C20 112 75 125 70 75C65 35 120 58 145 15" stroke="#E4DBF5" stroke-width="1.2"/>
+                    <path d="M60 160C45 115 95 125 92 82C90 48 130 65 158 35" stroke="#E4DBF5" stroke-width="1.2"/>
+                </svg>
+
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4">
+                        {% if profile.profile_image %}
+                            <img src="{{ profile.profile_image.url }}" alt="{{ profile.company_name }}" class="h-16 w-16 rounded-2xl border-2 border-white/30 bg-white object-cover">
+                        {% else %}
+                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-[#8d68d0] shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M5.25 21V6.75A2.25 2.25 0 017.5 4.5h6A2.25 2.25 0 0115.75 6.75V21M8.25 8.25h.008v.008H8.25V8.25zm0 3h.008v.008H8.25v-.008zm0 3h.008v.008H8.25v-.008zm3-6h.008v.008h-.008V8.25zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm3-3h.008v.008h-.008v-.008zM8.25 21v-3.75h3V21" />
+                                </svg>
+                            </div>
+                        {% endif %}
+
+                        <div class="min-w-0">
+                            <p class="truncate text-lg font-bold">
+                                {{ profile.company_name|default:profile.user.username }}
+                            </p>
+                            <p class="mt-1 text-xs text-violet-200">Company account</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 border-y border-white/10 py-5">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-violet-300">
+                            Company status
+                        </p>
+
+                        <div class="mt-3 flex items-center gap-2 text-sm text-violet-100">
+                            <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                            Profile published
+                        </div>
+                    </div>
+
+                    <nav class="mt-7">
+                        <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-violet-300">
+                            Quick Navigation
+                        </p>
+
+                        <div class="space-y-2">
+                            <a href="#about" class="flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/15">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M5.25 21V6.75A2.25 2.25 0 017.5 4.5h6A2.25 2.25 0 0115.75 6.75V21" />
+                                </svg>
+                                Company Overview
+                            </a>
+
+                            <a href="#details" class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-violet-100 transition hover:bg-white/10 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5zM3 21a9 9 0 0118 0" />
+                                </svg>
+                                Company Details
+                            </a>
+
+                            <a href="#website" class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-violet-100 transition hover:bg-white/10 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12h19.5" />
+                                </svg>
+                                Website
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Main content -->
+            <main class="px-7 py-9 sm:px-10 lg:px-12">
+                <section id="about" class="border-b border-[#e9e2f4] pb-9">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">Overview</p>
+                    <h2 class="mt-2 text-2xl font-bold text-[#4d4b52]">About the Company</h2>
+
+                    <div class="mt-5 text-sm leading-7 text-gray-600">
                         {% if profile.description %}
                             {{ profile.description|linebreaksbr }}
                         {% else %}
-                            No company description has been added yet.
+                            <p>No company description has been added yet.</p>
                         {% endif %}
                     </div>
                 </section>
 
-                <section class="grid gap-4 sm:grid-cols-2">
-                    <div class="rounded-xl border border-[#e3ddef] p-5">
-                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Industry</p>
-                        <p class="mt-2 text-sm font-semibold text-[#4d4b52]">
-                            {{ profile.industry|default:"Not provided" }}
-                        </p>
-                    </div>
+                <section id="details" class="border-b border-[#e9e2f4] py-9">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">Company Details</p>
+                    <h2 class="mt-2 text-2xl font-bold text-[#4d4b52]">Organization Information</h2>
 
-                    <div class="rounded-xl border border-[#e3ddef] p-5">
-                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Company Size</p>
-                        <p class="mt-2 text-sm font-semibold text-[#4d4b52]">
-                            {{ profile.get_company_size_display|default:"Not provided" }}
-                        </p>
-                    </div>
+                    <dl class="mt-7 grid gap-x-10 gap-y-7 sm:grid-cols-2">
+                        <div>
+                            <dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">Company Name</dt>
+                            <dd class="mt-2 text-sm font-medium text-[#4d4b52]">
+                                {{ profile.company_name|default:profile.user.username }}
+                            </dd>
+                        </div>
 
-                    <div class="rounded-xl border border-[#e3ddef] p-5">
-                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Location</p>
-                        <p class="mt-2 text-sm font-semibold text-[#4d4b52]">
-                            {{ profile.location|default:"Not provided" }}
-                        </p>
-                    </div>
+                        <div>
+                            <dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">Industry</dt>
+                            <dd class="mt-2 text-sm font-medium text-[#4d4b52]">
+                                {{ profile.industry|default:"Not provided" }}
+                            </dd>
+                        </div>
 
-                    <div class="rounded-xl border border-[#e3ddef] p-5">
-                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Website</p>
+                        <div>
+                            <dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">Company Size</dt>
+                            <dd class="mt-2 text-sm font-medium text-[#4d4b52]">
+                                {{ profile.get_company_size_display|default:"Not provided" }}
+                            </dd>
+                        </div>
 
-                        {% if profile.website %}
-                            <a href="{{ profile.website }}" target="_blank" rel="noopener noreferrer" class="mt-2 block truncate text-sm font-semibold text-[#7852c4] hover:text-[#5f3ba9]">
-                                Visit Website
-                            </a>
-                        {% else %}
-                            <p class="mt-2 text-sm font-semibold text-[#4d4b52]">Not provided</p>
-                        {% endif %}
-                    </div>
+                        <div>
+                            <dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">Location</dt>
+                            <dd class="mt-2 text-sm font-medium text-[#4d4b52]">
+                                {{ profile.location|default:"Not provided" }}
+                            </dd>
+                        </div>
+                    </dl>
                 </section>
-            </div>
-        </section>
+
+                <section id="website" class="py-9">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">Online Presence</p>
+                    <h2 class="mt-2 text-2xl font-bold text-[#4d4b52]">Company Website</h2>
+
+                    {% if profile.website %}
+                        <a href="{{ profile.website }}" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-3 border-b-2 border-[#7852c4] pb-2 text-sm font-semibold text-[#7852c4] transition hover:border-[#5f3ba9] hover:text-[#5f3ba9]">
+                            Visit Company Website →
+                        </a>
+                    {% else %}
+                        <p class="mt-5 text-sm text-gray-500">No company website has been provided yet.</p>
+                    {% endif %}
+                </section>
+            </main>
+        </div>
     </div>
 </div>
 {% endblock %}

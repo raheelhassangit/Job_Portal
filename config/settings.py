@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = "accounts.User"
 
-LOGIN_REDIRECT_URL = "profiles:profile_setup"
+LOGIN_REDIRECT_URL = "profiles:profile_view"
 LOGOUT_REDIRECT_URL = "accounts:login"
 
 # Application definition

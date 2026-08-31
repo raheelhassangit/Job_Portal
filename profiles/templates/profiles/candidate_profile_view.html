@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ profile.user.username }}'s Profile | Job Portal{% endblock %}
+{% block title %}Candidate Dashboard | Job Portal{% endblock %}
 
 {% block nav_links %}
     <a href="#" class="hidden transition hover:text-violet-300 md:inline">Browse Jobs</a>
@@ -8,13 +8,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="min-h-[calc(100vh-73px)] bg-[#aa93d5] px-5 py-10">
-    <div class="mx-auto grid w-full max-w-6xl overflow-hidden rounded-2xl bg-white shadow-2xl shadow-violet-950/30 lg:grid-cols-[0.8fr_1.2fr]">
+<div class="min-h-[calc(100vh-73px)] bg-[#f5f0fa] px-5 py-8 sm:px-8">
+    <div class="mx-auto max-w-7xl">
 
-        <!-- Candidate summary -->
-        <aside class="relative overflow-hidden bg-[#754ec2] px-8 py-12 text-white sm:px-12">
+        <!-- Decorative dashboard header -->
+        <header class="relative overflow-hidden rounded-3xl bg-[#754ec2] px-7 py-10 text-white shadow-xl shadow-violet-950/20 sm:px-10">
             <div class="absolute -left-24 -top-28 h-72 w-72 rounded-full bg-[#8f6ed2]/50"></div>
-            <div class="absolute -right-24 -bottom-24 h-72 w-72 rounded-full border-[28px] border-[#9d85d6]/20"></div>
+            <div class="absolute -right-24 -top-20 h-72 w-72 rotate-[-25deg] bg-[#5f3cb0]/50"></div>
+            <div class="absolute -bottom-28 right-10 h-72 w-72 rounded-full border-[28px] border-[#9d85d6]/20"></div>
 
             <svg class="absolute left-0 top-0 h-36 w-28 opacity-50" viewBox="0 0 120 140" fill="none">
                 <path d="M0 10C55 15 15 65 70 70C112 74 60 115 105 140" stroke="#E4DBF5" stroke-width="1.2"/>
@@ -22,171 +23,207 @@
                 <path d="M20 0C75 20 35 52 90 63C120 69 82 105 120 125" stroke="#E4DBF5" stroke-width="1.2"/>
             </svg>
 
-            <div class="relative z-10 flex h-full flex-col items-center text-center">
-                {% if profile.profile_image %}
-                    <img
-                        src="{{ profile.profile_image.url }}"
-                        alt="{{ profile.user.username }}"
-                        class="h-32 w-32 rounded-full border-4 border-white/40 object-cover shadow-xl"
-                    >
-                {% else %}
-                    <div class="grid h-32 w-32 place-items-center rounded-full border-4 border-white/30 bg-white/15 text-5xl font-bold">
-                        {{ profile.user.username|first|upper }}
-                    </div>
-                {% endif %}
+            <span class="absolute bottom-9 left-20 text-xl font-light text-violet-200">+</span>
+            <span class="absolute right-28 top-10 h-2 w-2 rounded-full border border-violet-100"></span>
 
-                <span class="mt-6 rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-violet-100">
-                    Candidate
-                </span>
-
-                <h1 class="mt-4 text-3xl font-bold">
-                    {{ profile.user.username }}
-                </h1>
-
-                {% if profile.location %}
-                    <p class="mt-2 flex items-center gap-2 text-sm text-violet-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 12a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" />
-                        </svg>
-                        {{ profile.location }}
-                    </p>
-                {% endif %}
-
-                <div class="mt-10 w-full border-t border-white/20 pt-7 text-left">
-                    <p class="text-xs font-semibold uppercase tracking-widest text-violet-200">
-                        Profile status
-                    </p>
-                    <p class="mt-2 text-sm text-white">
-                        Your candidate profile is visible to employers.
-                    </p>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Read-only profile details -->
-        <section class="px-7 py-10 sm:px-10 lg:px-12">
-            <header class="flex flex-col gap-4 border-b border-[#e9e2f4] pb-6 sm:flex-row sm:items-end sm:justify-between">
+            <div class="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                 <div>
-                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">
-                        Profile Overview
+                    <p class="text-sm font-semibold uppercase tracking-widest text-violet-200">
+                        Candidate Dashboard
                     </p>
 
-                    <h2 class="mt-2 text-3xl font-bold text-[#4d4b52]">
-                        Candidate Details
-                    </h2>
+                    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+                        Welcome back, {{ profile.user.username }}
+                    </h1>
 
-                    <p class="mt-2 text-sm text-gray-500">
-                        Your professional information in one place.
+                    <p class="mt-3 max-w-xl text-sm leading-relaxed text-violet-100 sm:text-base">
+                        Explore your profile information and make your professional presence count.
                     </p>
                 </div>
 
                 <a href="{% url 'profiles:profile_setup' %}"
-                class="inline-flex w-fit items-center rounded-lg bg-[#7852c4]/10 px-4 py-2 text-sm font-semibold text-[#7852c4] transition hover:bg-[#7852c4] hover:text-white">
+                   class="inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#754ec2] shadow-lg shadow-violet-950/30 transition hover:bg-violet-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.688-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13l-3.164.95.95-3.164a4.5 4.5 0 011.13-1.897l9.261-9.261z" />
+                    </svg>
                     Edit Profile
                 </a>
-            </header>
+            </div>
+        </header>
 
-            <div class="space-y-8 py-8">
-                <section>
-                    <h3 class="text-base font-semibold text-[#4d4b52]">About</h3>
+        <!-- Dashboard area -->
+        <div class="mt-6 grid overflow-hidden rounded-3xl border border-[#dfd2ed] bg-white shadow-lg shadow-violet-950/10 lg:grid-cols-[310px_1fr]">
 
-                    <div class="mt-3 rounded-xl border border-[#e3ddef] bg-[#faf8ff] p-5 text-sm leading-relaxed text-gray-600">
+            <!-- Attractive, separate sidebar -->
+            <aside class="relative overflow-hidden bg-[#2f1f4e] px-6 py-8 text-white sm:px-8">
+                <div class="absolute -right-20 -top-16 h-48 w-48 rounded-full bg-[#8d68d0]/25"></div>
+                <div class="absolute -bottom-24 -left-20 h-56 w-56 rounded-full border-[24px] border-[#9e82d6]/15"></div>
+
+                <svg class="absolute bottom-0 right-0 h-40 w-40 opacity-30" viewBox="0 0 160 160" fill="none">
+                    <path d="M15 160C0 110 60 130 55 75C50 25 110 55 130 0" stroke="#E4DBF5" stroke-width="1.2"/>
+                    <path d="M35 160C20 112 75 125 70 75C65 35 120 58 145 15" stroke="#E4DBF5" stroke-width="1.2"/>
+                    <path d="M60 160C45 115 95 125 92 82C90 48 130 65 158 35" stroke="#E4DBF5" stroke-width="1.2"/>
+                </svg>
+
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4">
+                        {% if profile.profile_image %}
+                            <img src="{{ profile.profile_image.url }}" alt="{{ profile.user.username }}" class="h-16 w-16 rounded-2xl border-2 border-white/30 object-cover">
+                        {% else %}
+                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-[#8d68d0] text-2xl font-bold shadow-lg">
+                                {{ profile.user.username|first|upper }}
+                            </div>
+                        {% endif %}
+
+                        <div class="min-w-0">
+                            <p class="truncate text-lg font-bold">{{ profile.user.username }}</p>
+                            <p class="mt-1 text-xs text-violet-200">Candidate account</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 border-y border-white/10 py-5">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-violet-300">
+                            Profile status
+                        </p>
+
+                        <div class="mt-3 flex items-center gap-2 text-sm text-violet-100">
+                            <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                            Active and visible
+                        </div>
+                    </div>
+
+                    <nav class="mt-7">
+                        <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-violet-300">
+                            Quick Navigation
+                        </p>
+
+                        <div class="space-y-2">
+                            <a href="#about" class="flex items-center gap-3 rounded-xl bg-white/10 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/15">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.118a7.5 7.5 0 0115 0A17.933 17.933 0 0112 21.75a17.933 17.933 0 01-7.5-1.632z" />
+                                </svg>
+                                About Me
+                            </a>
+
+                            <a href="#experience" class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-violet-100 transition hover:bg-white/10 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 7h-3V5a2 2 0 00-2-2H9a2 2 0 00-2 2v2H4a1 1 0 00-1 1v11a1 1 0 001 1h16a1 1 0 001-1V8a1 1 0 00-1-1zM9 5h6v2H9V5z" />
+                                </svg>
+                                Career Details
+                            </a>
+
+                            <a href="#contact" class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-violet-100 transition hover:bg-white/10 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75l9.75 6 9.75-6M3.75 19.5h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5z" />
+                                </svg>
+                                Contact
+                            </a>
+
+                            <a href="#resume" class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-violet-100 transition hover:bg-white/10 hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A3.375 3.375 0 0011.25 11.625v2.625m8.25 0v4.125a2.625 2.625 0 01-2.625 2.625h-9.75A2.625 2.625 0 014.5 18.375V14.25m15 0h-15" />
+                                </svg>
+                                Resume
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Main content -->
+            <main class="px-7 py-9 sm:px-10 lg:px-12">
+                <section id="about" class="border-b border-[#e9e2f4] pb-9">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">Overview</p>
+                    <h2 class="mt-2 text-2xl font-bold text-[#4d4b52]">About Me</h2>
+
+                    <div class="mt-5 text-sm leading-7 text-gray-600">
                         {% if profile.bio %}
                             {{ profile.bio|linebreaksbr }}
                         {% else %}
-                            No bio has been added yet.
+                            <p>No bio has been added yet.</p>
                         {% endif %}
+                    </div>
+
+                    <div class="mt-7 border-t border-[#eee8f5] pt-6">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Skills</p>
+                        <p class="mt-3 text-sm leading-7 text-[#4d4b52]">
+                            {{ profile.skills|default:"No skills have been added yet." }}
+                        </p>
                     </div>
                 </section>
 
-                <section>
-                    <h3 class="text-base font-semibold text-[#4d4b52]">Skills</h3>
-
-                    <div class="mt-3 rounded-xl border border-[#e3ddef] bg-[#faf8ff] p-5 text-sm leading-relaxed text-gray-600">
-                        {% if profile.skills %}
-                            {{ profile.skills }}
-                        {% else %}
-                            No skills have been added yet.
-                        {% endif %}
-                    </div>
-                </section>
-
-                <section class="grid gap-5 md:grid-cols-2">
+                <section id="experience" class="grid gap-10 border-b border-[#e9e2f4] py-9 md:grid-cols-2">
                     <div>
-                        <h3 class="text-base font-semibold text-[#4d4b52]">Experience</h3>
+                        <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">Experience</p>
+                        <h2 class="mt-2 text-2xl font-bold text-[#4d4b52]">Work Background</h2>
 
-                        <div class="mt-3 min-h-32 rounded-xl border border-[#e3ddef] bg-[#faf8ff] p-5 text-sm leading-relaxed text-gray-600">
+                        <div class="mt-5 text-sm leading-7 text-gray-600">
                             {% if profile.experience %}
                                 {{ profile.experience|linebreaksbr }}
                             {% else %}
-                                No experience has been added yet.
+                                <p>No experience has been added yet.</p>
                             {% endif %}
                         </div>
                     </div>
 
                     <div>
-                        <h3 class="text-base font-semibold text-[#4d4b52]">Education</h3>
+                        <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">Education</p>
+                        <h2 class="mt-2 text-2xl font-bold text-[#4d4b52]">Academic Background</h2>
 
-                        <div class="mt-3 min-h-32 rounded-xl border border-[#e3ddef] bg-[#faf8ff] p-5 text-sm leading-relaxed text-gray-600">
+                        <div class="mt-5 text-sm leading-7 text-gray-600">
                             {% if profile.education %}
                                 {{ profile.education|linebreaksbr }}
                             {% else %}
-                                No education details have been added yet.
+                                <p>No education details have been added yet.</p>
                             {% endif %}
                         </div>
                     </div>
                 </section>
 
-                <section>
-                    <h3 class="text-base font-semibold text-[#4d4b52]">Contact Information</h3>
+                <section id="contact" class="border-b border-[#e9e2f4] py-9">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">Contact</p>
+                    <h2 class="mt-2 text-2xl font-bold text-[#4d4b52]">Contact Information</h2>
 
-                    <div class="mt-3 grid gap-4 sm:grid-cols-2">
-                        <div class="rounded-xl border border-[#e3ddef] p-4">
-                            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Phone Number</p>
-                            <p class="mt-2 text-sm font-medium text-[#4d4b52]">
-                                {{ profile.phone_number|default:"Not provided" }}
-                            </p>
+                    <dl class="mt-7 grid gap-x-10 gap-y-7 sm:grid-cols-2">
+                        <div>
+                            <dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">Phone Number</dt>
+                            <dd class="mt-2 text-sm font-medium text-[#4d4b52]">{{ profile.phone_number|default:"Not provided" }}</dd>
                         </div>
 
-                        <div class="rounded-xl border border-[#e3ddef] p-4">
-                            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">LinkedIn</p>
-
-                            {% if profile.linkedin_url %}
-                                <a href="{{ profile.linkedin_url }}" target="_blank" rel="noopener noreferrer" class="mt-2 block truncate text-sm font-medium text-[#7852c4] hover:text-[#5f3ba9]">
-                                    View LinkedIn profile
-                                </a>
-                            {% else %}
-                                <p class="mt-2 text-sm font-medium text-[#4d4b52]">Not provided</p>
-                            {% endif %}
+                        <div>
+                            <dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">Location</dt>
+                            <dd class="mt-2 text-sm font-medium text-[#4d4b52]">{{ profile.location|default:"Not provided" }}</dd>
                         </div>
-                    </div>
+
+                        <div>
+                            <dt class="text-xs font-semibold uppercase tracking-wider text-gray-400">LinkedIn Profile</dt>
+                            <dd class="mt-2 text-sm font-medium">
+                                {% if profile.linkedin_url %}
+                                    <a href="{{ profile.linkedin_url }}" target="_blank" rel="noopener noreferrer" class="text-[#7852c4] hover:text-[#5f3ba9] hover:underline">
+                                        View LinkedIn Profile
+                                    </a>
+                                {% else %}
+                                    <span class="text-[#4d4b52]">Not provided</span>
+                                {% endif %}
+                            </dd>
+                        </div>
+                    </dl>
                 </section>
 
-                {% if profile.resume %}
-                    <section>
-                        <h3 class="text-base font-semibold text-[#4d4b52]">Resume</h3>
+                <section id="resume" class="py-9">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-[#7852c4]">Documents</p>
+                    <h2 class="mt-2 text-2xl font-bold text-[#4d4b52]">Resume</h2>
 
-                        <a href="{{ profile.resume.url }}" target="_blank" rel="noopener noreferrer" class="mt-3 flex items-center justify-between rounded-xl border border-[#d7c8ec] bg-[#faf8ff] p-4 transition hover:border-[#7852c4] hover:bg-[#f4efff]">
-                            <div class="flex items-center gap-3">
-                                <span class="grid h-10 w-10 place-items-center rounded-lg bg-[#7852c4]/10 text-[#7852c4]">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A3.375 3.375 0 0011.25 11.625v2.625m8.25 0v4.125a2.625 2.625 0 01-2.625 2.625h-9.75A2.625 2.625 0 014.5 18.375V14.25m15 0h-15" />
-                                    </svg>
-                                </span>
-
-                                <div>
-                                    <p class="text-sm font-semibold text-[#4d4b52]">View Resume</p>
-                                    <p class="mt-1 text-xs text-gray-500">Open the uploaded resume file.</p>
-                                </div>
-                            </div>
-
-                            <span class="text-[#7852c4]">→</span>
+                    {% if profile.resume %}
+                        <a href="{{ profile.resume.url }}" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-3 border-b-2 border-[#7852c4] pb-2 text-sm font-semibold text-[#7852c4] transition hover:border-[#5f3ba9] hover:text-[#5f3ba9]">
+                            View Uploaded Resume →
                         </a>
-                    </section>
-                {% endif %}
-            </div>
-        </section>
+                    {% else %}
+                        <p class="mt-5 text-sm text-gray-500">No resume has been uploaded yet.</p>
+                    {% endif %}
+                </section>
+            </main>
+        </div>
     </div>
 </div>
 {% endblock %}
