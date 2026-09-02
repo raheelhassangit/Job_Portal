@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Update Job{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-10 sm:px-8">
+  <div class="bg-white border border-[#e3ddef] rounded-2xl p-8">
+    <h1 class="text-[#4d4b52] text-xl font-bold mb-6">Update Job</h1>
+
+    <form method="POST" class="space-y-5">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+        <div class="bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg px-4 py-3">
+          {{ form.non_field_errors }}
+        </div>
+      {% endif %}
+
+      {% for field in form %}
+        <div>
+          <label for="{{ field.id_for_label }}" class="block text-gray-600 text-sm font-medium mb-1">
+            {{ field.label }}
+          </label>
+
+          {% if field.name == "description" or field.name == "requirements" %}
+            {% render_field field rows="4" class="w-full bg-[#faf8ff] border border-[#e3ddef] rounded-lg px-4 py-2.5 text-sm text-[#4d4b52] placeholder-gray-400 focus:outline-none focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15 resize-none" %}
+          {% else %}
+            {% render_field field class="w-full bg-[#faf8ff] border border-[#e3ddef] rounded-lg px-4 py-2.5 text-sm text-[#4d4b52] placeholder-gray-400 focus:outline-none focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" %}
+          {% endif %}
+
+          {% if field.errors %}
+            <p class="text-red-500 text-xs mt-1">{{ field.errors|striptags }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <div class="flex gap-3">
+        <button type="submit" class="flex-1 bg-[#7852c4] text-white font-semibold py-2.5 rounded-lg text-sm hover:bg-[#6742ad] transition">
+          Update Job
+        </button>
+        <a href="{% url 'jobs:job_detail' job_id=job.pk %}" class="flex-1 text-center bg-[#f0eaf9] text-[#7852c4] font-semibold py-2.5 rounded-lg text-sm hover:bg-[#e6dcf5] transition">
+          Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

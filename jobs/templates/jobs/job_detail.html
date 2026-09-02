@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}{{ job.title }}{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-10 sm:px-8">
+  <div class="bg-white border border-[#e3ddef] rounded-2xl p-8">
+    <div class="flex justify-between items-start mb-6 pb-6 border-b border-[#e9e2f4]">
+      <div>
+        <h1 class="text-[#4d4b52] text-2xl font-bold">{{ job.title }}</h1>
+        <p class="text-gray-500 mt-1">{{ job.company.company_name }}</p>
+      </div>
+      <span class="text-xs font-medium text-[#7852c4] bg-[#f0eaf9] px-3 py-1.5 rounded-full whitespace-nowrap">
+        {{ job.get_job_type_display }}
+      </span>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-4 mb-8">
+      <div>
+        <p class="text-gray-400 text-xs uppercase tracking-wide mb-1">Location</p>
+        <p class="text-[#4d4b52] text-sm font-medium">{{ job.location }}</p>
+      </div>
+      <div>
+        <p class="text-gray-400 text-xs uppercase tracking-wide mb-1">Experience</p>
+        <p class="text-[#4d4b52] text-sm font-medium">{{ job.get_experience_level_display }}</p>
+      </div>
+      <div>
+        <p class="text-gray-400 text-xs uppercase tracking-wide mb-1">Salary</p>
+        <p class="text-[#4d4b52] text-sm font-medium">
+          {% if job.salary_min or job.salary_max %}
+            {{ job.salary_min|default:"—" }} - {{ job.salary_max|default:"—" }}
+          {% else %}
+            Not disclosed
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <h2 class="text-[#4d4b52] text-base font-semibold mb-2">Description</h2>
+      <p class="text-gray-600 text-sm leading-relaxed whitespace-pre-line">{{ job.description }}</p>
+    </div>
+
+    {% if job.requirements %}
+      <div class="mb-6">
+        <h2 class="text-[#4d4b52] text-base font-semibold mb-2">Requirements</h2>
+        <p class="text-gray-600 text-sm leading-relaxed whitespace-pre-line">{{ job.requirements }}</p>
+      </div>
+    {% endif %}
+
+    <p class="text-gray-400 text-xs mb-6">Posted {{ job.posted_at|timesince }} ago</p>
+
+    {% if user.is_authenticated and user.role == "company" and job.company == user.company_profile %}
+      <div class="flex gap-3 border-t border-[#e9e2f4] pt-6">
+        <a href="{% url 'jobs:job_update' job_id=job.pk %}" class="bg-[#7852c4] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#6742ad] transition">
+          Edit
+        </a>
+        <a href="{% url 'jobs:job_delete' job_id=job.pk %}" class="bg-red-50 text-red-600 border border-red-200 px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-red-100 transition">
+          Delete
+        </a>
+      </div>
+    {% elif user.is_authenticated and user.role == "candidate" %}
+      <div class="border-t border-[#e9e2f4] pt-6">
+        <button class="bg-[#7852c4] text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#6742ad] transition">
+          Apply Now
+        </button>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
