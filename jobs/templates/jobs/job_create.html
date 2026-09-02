@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Post a Job{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-10 sm:px-8">
+  <div class="bg-white border border-[#e3ddef] rounded-2xl p-8">
+    <h1 class="text-[#4d4b52] text-xl font-bold mb-1">Post a New Job</h1>
+    <p class="text-gray-500 text-sm mb-6">Fill in the details candidates will see.</p>
+
+    <form method="POST" class="space-y-5">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+        <div class="bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg px-4 py-3">
+          {{ form.non_field_errors }}
+        </div>
+      {% endif %}
+
+      {% for field in form %}
+        <div>
+          <label for="{{ field.id_for_label }}" class="block text-gray-600 text-sm font-medium mb-1">
+            {{ field.label }}
+          </label>
+
+          {% if field.name == "description" or field.name == "requirements" %}
+            {% render_field field rows="4" class="w-full bg-[#faf8ff] border border-[#e3ddef] rounded-lg px-4 py-2.5 text-sm text-[#4d4b52] placeholder-gray-400 focus:outline-none focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15 resize-none" %}
+          {% else %}
+            {% render_field field class="w-full bg-[#faf8ff] border border-[#e3ddef] rounded-lg px-4 py-2.5 text-sm text-[#4d4b52] placeholder-gray-400 focus:outline-none focus:border-[#7852c4] focus:ring-2 focus:ring-[#7852c4]/15" %}
+          {% endif %}
+
+          {% if field.errors %}
+            <p class="text-red-500 text-xs mt-1">{{ field.errors|striptags }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="w-full bg-[#7852c4] text-white font-semibold py-2.5 rounded-lg text-sm hover:bg-[#6742ad] transition">
+        Post Job
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
