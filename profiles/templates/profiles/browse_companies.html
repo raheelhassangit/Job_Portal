@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Companies{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 py-10 sm:px-8">
+  <div class="mb-8">
+    <h1 class="text-[#4d4b52] text-2xl font-bold">Companies</h1>
+    <p class="text-gray-500 text-sm mt-1">{{ companies|length }} compan{{ companies|length|pluralize:"y,ies" }} hiring on JobPortal</p>
+  </div>
+
+  {% if companies %}
+    <div class="grid gap-4 md:grid-cols-2">
+      {% for company in companies %}
+        <div class="bg-white border border-[#e3ddef] rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            {% if company.profile_image %}
+              <img src="{{ company.profile_image.url }}" alt="{{ company.company_name }}" class="h-10 w-10 rounded-lg object-cover">
+            {% else %}
+              <span class="grid h-10 w-10 place-items-center rounded-lg bg-[#f0eaf9] text-[#7852c4] font-bold">
+                {{ company.company_name|first|upper }}
+              </span>
+            {% endif %}
+            <div>
+              <h2 class="text-[#4d4b52] font-semibold">{{ company.company_name }}</h2>
+              {% if company.industry %}
+                <p class="text-gray-400 text-xs">{{ company.industry }}</p>
+              {% endif %}
+            </div>
+          </div>
+
+          {% if company.description %}
+            <p class="text-gray-600 text-sm mb-3 line-clamp-2">{{ company.description }}</p>
+          {% endif %}
+
+          {% if company.location %}
+            <p class="text-gray-500 text-xs">
+              <span class="font-medium text-[#7852c4]">Location:</span> {{ company.location }}
+            </p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-16 text-gray-400 bg-white rounded-xl border border-[#e3ddef]">No companies with completed profiles yet.</div>
+  {% endif %}
+</div>
+{% endblock %}

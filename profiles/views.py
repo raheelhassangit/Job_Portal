@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import User
 from .forms import CandidateProfileForm, CompanyProfileForm
 from django.core.exceptions import PermissionDenied
-from .models import CandidateProfile
+from .models import CandidateProfile, CompanyProfile
 
 @login_required
 def profile_setup(request):
@@ -51,4 +51,12 @@ def find_candidates(request):
         raise PermissionDenied("Only companies can browse candidates.")
 
     candidates = CandidateProfile.objects.exclude(bio="", skills="").select_related("user")
-    return render(request, "profiles/find_candidates.html", {"candidates": candidates})        
+    return render(request, "profiles/find_candidates.html", {"candidates": candidates})  
+
+@login_required
+def browse_companies(request):
+    if request.user.role != "candidate":
+        raise PermissionDenied("Only candidates can browse companies.")
+
+    companies = CompanyProfile.objects.exclude(company_name="", description="")
+    return render(request, "profiles/browse_companies.html", {"companies": companies})      
