@@ -1,5 +1,5 @@
 from django.db import models
-from profiles.models import CompanyProfile
+from profiles.models import CompanyProfile, CandidateProfile
 
 
 class Job(models.Model):
@@ -28,3 +28,25 @@ class Job(models.Model):
 
     def __str__(self):
         return f"{self.title} at {self.company.company_name}"
+    
+class Application(models.Model):
+    class ApplicationStatus(models.TextChoices):
+        PENDING = "pending", "Pending"
+        REVIEWED = "reviewed", "Reviewed"
+        ACCEPTED = "accepted", "Accepted"
+        REJECTED = "rejected", "Rejected"
+    
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name="applications")
+    candidate = models.ForeignKey(CandidateProfile, on_delete=models.CASCADE, related_name="applications")
+    status = models.CharField(max_length=20, choices=ApplicationStatus.choices, default=ApplicationStatus.PENDING)
+    cover_message = models.TextField(max_length=300, blank=True)
+    applied_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["job", "candidate"],
+                name="unique_job_candidate_application"
+            )
+        ]
+        
