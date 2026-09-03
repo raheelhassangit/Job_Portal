@@ -2,40 +2,102 @@
 {% block title %}JobPortal — Find Your Next Opportunity{% endblock %}
 
 {% block content %}
-<div class="max-w-6xl mx-auto px-4 py-16 sm:px-8">
-  <div class="text-center max-w-2xl mx-auto mb-16">
-    <h1 class="text-[#4d4b52] text-4xl font-bold mb-4">Find your next opportunity</h1>
-    <p class="text-gray-500 text-lg mb-8">Connecting candidates with companies hiring right now.</p>
-    <div class="flex justify-center gap-3">
-      {% if not user.is_authenticated %}
-        <a href="{% url 'accounts:signup' %}" class="bg-[#7852c4] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#6742ad] transition">
+
+<!-- Hero -->
+<section class="bg-[#2f1f4e] px-4 py-20 sm:px-8">
+  <div class="max-w-4xl mx-auto text-center">
+    <h1 class="text-white text-4xl sm:text-5xl font-bold mb-4">Find your next opportunity</h1>
+    <p class="text-violet-200 text-lg mb-10">Connecting candidates with companies hiring right now.</p>
+
+    <form action="{% url 'jobs:job_list' %}" method="get" class="max-w-xl mx-auto flex gap-2">
+      <input type="text" name="q" placeholder="Job title or keyword"
+             class="flex-1 bg-white rounded-lg px-4 py-3 text-sm text-[#4d4b52] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7852c4]">
+      <button type="submit" class="bg-[#7852c4] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#6742ad] transition">
+        Search
+      </button>
+    </form>
+
+    {% if not user.is_authenticated %}
+      <div class="flex justify-center gap-3 mt-8">
+        <a href="{% url 'accounts:signup' %}" class="bg-white text-[#4d4b52] px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-violet-100 transition">
           Get Started
         </a>
-      {% endif %}
-      <a href="{% url 'jobs:job_list' %}" class="bg-[#f0eaf9] text-[#7852c4] px-6 py-3 rounded-lg font-semibold hover:bg-[#e6dcf5] transition">
-        Browse Jobs
-      </a>
+        <a href="{% url 'jobs:job_list' %}" class="border border-white/30 text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-white/10 transition">
+          Browse Jobs
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="bg-white border-b border-[#e3ddef]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-8 py-8 grid grid-cols-3 divide-x divide-[#e9e2f4] text-center">
+    <div>
+      <p class="text-[#7852c4] text-3xl font-bold">{{ stats.jobs }}</p>
+      <p class="text-gray-500 text-sm mt-1">Open positions</p>
     </div>
+    <div>
+      <p class="text-[#7852c4] text-3xl font-bold">{{ stats.companies }}</p>
+      <p class="text-gray-500 text-sm mt-1">Companies hiring</p>
+    </div>
+    <div>
+      <p class="text-[#7852c4] text-3xl font-bold">{{ stats.candidates }}</p>
+      <p class="text-gray-500 text-sm mt-1">Active candidates</p>
+    </div>
+  </div>
+</section>
+
+<!-- Recent jobs -->
+<section class="max-w-6xl mx-auto px-4 py-16 sm:px-8">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-[#4d4b52] text-xl font-bold">Recent openings</h2>
+    <a href="{% url 'jobs:job_list' %}" class="text-[#7852c4] text-sm font-semibold hover:underline">View all</a>
   </div>
 
   {% if recent_jobs %}
-    <div>
-      <h2 class="text-[#4d4b52] text-xl font-bold mb-5">Recent Openings</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        {% for job in recent_jobs %}
-          <a href="{% url 'jobs:job_detail' job_id=job.pk %}"
-             class="flex items-center justify-between gap-4 bg-white border border-[#e3ddef] rounded-xl px-5 py-4 hover:border-[#7852c4] transition">
-            <div class="min-w-0">
-              <h3 class="text-[#4d4b52] font-semibold truncate">{{ job.title }}</h3>
-              <p class="text-gray-500 text-sm mt-0.5">{{ job.company.company_name }} · {{ job.location }}</p>
-            </div>
-            <span class="text-xs font-medium text-[#7852c4] bg-[#f0eaf9] px-2.5 py-1 rounded-full whitespace-nowrap">
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {% for job in recent_jobs %}
+        <a href="{% url 'jobs:job_detail' job_id=job.pk %}"
+           class="bg-white border border-[#e3ddef] rounded-xl p-5 hover:border-[#7852c4] transition">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-[#4d4b52] font-semibold">{{ job.title }}</h3>
+            <span class="text-xs font-medium text-[#7852c4] bg-[#f0eaf9] px-2 py-1 rounded-full whitespace-nowrap">
               {{ job.get_job_type_display }}
             </span>
-          </a>
-        {% endfor %}
+          </div>
+          <p class="text-gray-500 text-sm mb-3">{{ job.company.company_name }}</p>
+          <p class="text-gray-400 text-xs">{{ job.location }} · {{ job.get_experience_level_display }}</p>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-16 text-gray-400 bg-white rounded-xl border border-[#e3ddef]">No jobs posted yet.</div>
+  {% endif %}
+</section>
+
+<!-- How it works -->
+<section class="bg-white border-t border-[#e3ddef]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-8 py-16">
+    <h2 class="text-[#4d4b52] text-xl font-bold text-center mb-10">How it works</h2>
+    <div class="grid sm:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="w-10 h-10 rounded-full bg-[#f0eaf9] text-[#7852c4] font-bold flex items-center justify-center mx-auto mb-3">1</div>
+        <h3 class="text-[#4d4b52] font-semibold mb-1">Create your profile</h3>
+        <p class="text-gray-500 text-sm">Sign up as a candidate or company and complete your profile.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-10 h-10 rounded-full bg-[#f0eaf9] text-[#7852c4] font-bold flex items-center justify-center mx-auto mb-3">2</div>
+        <h3 class="text-[#4d4b52] font-semibold mb-1">Browse or post</h3>
+        <p class="text-gray-500 text-sm">Candidates browse openings, companies post job listings.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-10 h-10 rounded-full bg-[#f0eaf9] text-[#7852c4] font-bold flex items-center justify-center mx-auto mb-3">3</div>
+        <h3 class="text-[#4d4b52] font-semibold mb-1">Connect</h3>
+        <p class="text-gray-500 text-sm">Apply to roles or review applicants, all in one place.</p>
       </div>
     </div>
-  {% endif %}
-</div>
+  </div>
+</section>
+
 {% endblock %}

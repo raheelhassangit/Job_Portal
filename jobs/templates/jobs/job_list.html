@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="max-w-6xl mx-auto px-4 py-10 sm:px-8">
-  <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8">
+  <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
     <div>
       <h1 class="text-[#4d4b52] text-2xl font-bold">Available Jobs</h1>
       <p class="text-gray-500 text-sm mt-1">{{ jobs|length }} open position{{ jobs|length|pluralize }}</p>
@@ -14,6 +14,37 @@
       </a>
     {% endif %}
   </div>
+
+  <form method="get" class="bg-white border border-[#e3ddef] rounded-xl p-4 mb-6 grid gap-3 sm:grid-cols-4">
+    <input type="text" name="q" value="{{ query }}" placeholder="Title or company"
+           class="sm:col-span-2 bg-[#faf8ff] border border-[#e3ddef] rounded-lg px-3 py-2 text-sm text-[#4d4b52] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7852c4]/15">
+
+    <select name="job_type" class="bg-[#faf8ff] border border-[#e3ddef] rounded-lg px-3 py-2 text-sm text-[#4d4b52] focus:outline-none focus:ring-2 focus:ring-[#7852c4]/15">
+      <option value="">Any type</option>
+      {% for value, label in job_type_choices %}
+        <option value="{{ value }}" {% if job_type == value %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+
+    <select name="experience_level" class="bg-[#faf8ff] border border-[#e3ddef] rounded-lg px-3 py-2 text-sm text-[#4d4b52] focus:outline-none focus:ring-2 focus:ring-[#7852c4]/15">
+      <option value="">Any level</option>
+      {% for value, label in experience_choices %}
+        <option value="{{ value }}" {% if experience_level == value %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+
+    <input type="text" name="location" value="{{ location }}" placeholder="Location"
+           class="bg-[#faf8ff] border border-[#e3ddef] rounded-lg px-3 py-2 text-sm text-[#4d4b52] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7852c4]/15">
+
+    <div class="flex gap-2 sm:col-span-4">
+      <button type="submit" class="bg-[#7852c4] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#6742ad] transition">
+        Search
+      </button>
+      <a href="{% url 'jobs:job_list' %}" class="bg-[#f0eaf9] text-[#7852c4] px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#e6dcf5] transition">
+        Clear
+      </a>
+    </div>
+  </form>
 
   {% if jobs %}
     <div class="space-y-3">
@@ -34,7 +65,7 @@
       {% endfor %}
     </div>
   {% else %}
-    <div class="text-center py-16 text-gray-400 bg-white rounded-xl border border-[#e3ddef]">No jobs available right now.</div>
+    <div class="text-center py-16 text-gray-400 bg-white rounded-xl border border-[#e3ddef]">No jobs match your search.</div>
   {% endif %}
 </div>
 {% endblock %}

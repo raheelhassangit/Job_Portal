@@ -3,6 +3,7 @@ from .forms import JobForm
 from .models import Job
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from django.db.models import Q
 
 
 @login_required
@@ -25,7 +26,34 @@ def job_create(request):
 
 def job_list(request):
     jobs = Job.objects.filter(is_active=True)
-    return render(request, "jobs/job_list.html", {"jobs": jobs})
+
+    query = request.GET.get("q")
+    if query:
+        jobs = jobs.filter(
+            Q(title__icontains=query) | Q(company__company_name__icontains=query)
+        )
+
+    job_type = request.GET.get("job_type")
+    if job_type:
+        jobs = jobs.filter(job_type=job_type)
+
+    experience_level = request.GET.get("experience_level")
+    if experience_level:
+        jobs = jobs.filter(experience_level=experience_level)
+
+    location = request.GET.get("location")
+    if location:
+        jobs = jobs.filter(location__icontains=location)
+
+    return render(request, "jobs/job_list.html", {
+    "jobs": jobs,
+    "query": query or "",
+    "job_type": job_type or "",
+    "experience_level": experience_level or "",
+    "location": location or "",
+    "job_type_choices": Job.JobType.choices,
+    "experience_choices": Job.ExperienceLevel.choices,
+    })
 
 
 def job_detail(request, job_id):
