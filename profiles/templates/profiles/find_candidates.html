@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Find Candidates{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 py-10 sm:px-8">
+  <div class="mb-8">
+    <h1 class="text-[#4d4b52] text-2xl font-bold">Find Candidates</h1>
+    <p class="text-gray-500 text-sm mt-1">{{ candidates|length }} candidate{{ candidates|length|pluralize }} with completed profiles</p>
+  </div>
+
+  {% if candidates %}
+    <div class="grid gap-4 md:grid-cols-2">
+      {% for candidate in candidates %}
+        <div class="bg-white border border-[#e3ddef] rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-3">
+            {% if candidate.profile_image %}
+              <img src="{{ candidate.profile_image.url }}" alt="{{ candidate.user.username }}" class="h-10 w-10 rounded-full object-cover">
+            {% else %}
+              <span class="grid h-10 w-10 place-items-center rounded-full bg-[#f0eaf9] text-[#7852c4] font-bold">
+                {{ candidate.user.username|first|upper }}
+              </span>
+            {% endif %}
+            <div>
+              <h2 class="text-[#4d4b52] font-semibold">{{ candidate.user.username }}</h2>
+              {% if candidate.location %}
+                <p class="text-gray-400 text-xs">{{ candidate.location }}</p>
+              {% endif %}
+            </div>
+          </div>
+
+          {% if candidate.bio %}
+            <p class="text-gray-600 text-sm mb-3 line-clamp-2">{{ candidate.bio }}</p>
+          {% endif %}
+
+          {% if candidate.skills %}
+            <p class="text-gray-500 text-xs">
+              <span class="font-medium text-[#7852c4]">Skills:</span> {{ candidate.skills }}
+            </p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-16 text-gray-400 bg-white rounded-xl border border-[#e3ddef]">No candidates with completed profiles yet.</div>
+  {% endif %}
+</div>
+{% endblock %}

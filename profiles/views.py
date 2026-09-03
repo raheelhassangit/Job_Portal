@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from accounts.models import User
 from .forms import CandidateProfileForm, CompanyProfileForm
-
+from django.core.exceptions import PermissionDenied
+from .models import CandidateProfile
 
 @login_required
 def profile_setup(request):
@@ -43,3 +44,11 @@ def profile_view(request):
             "profiles/company_profile_view.html",
             {"profile": request.user.company_profile},
         )
+        
+@login_required
+def find_candidates(request):
+    if request.user.role != "company":
+        raise PermissionDenied("Only companies can browse candidates.")
+
+    candidates = CandidateProfile.objects.exclude(bio="", skills="").select_related("user")
+    return render(request, "profiles/find_candidates.html", {"candidates": candidates})        

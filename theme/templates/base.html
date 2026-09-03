@@ -49,11 +49,11 @@
                         <a href="{% url 'jobs:job_list' %}" class="whitespace-nowrap rounded-lg px-3 py-2 font-semibold text-violet-100 transition hover:bg-white/10 hover:text-white">
                             Browse All Jobs
                         </a>
-                        <a href="#" class="whitespace-nowrap rounded-lg px-3 py-2 font-semibold text-violet-100 transition hover:bg-white/10 hover:text-white">
+                        <a href="{% url 'profiles:find_candidates' %}" class="whitespace-nowrap rounded-lg px-3 py-2 font-semibold text-violet-100 transition hover:bg-white/10 hover:text-white">
                             Find Candidates
                         </a>
                     {% else %}
-                        <a href="#" class="whitespace-nowrap rounded-lg px-3 py-2 font-semibold text-violet-100 transition hover:bg-white/10 hover:text-white">
+                        <a href="{% url 'jobs:job_list' %}" class="whitespace-nowrap rounded-lg px-3 py-2 font-semibold text-violet-100 transition hover:bg-white/10 hover:text-white">
                             Browse All Jobs
                         </a>
                         <a href="#" class="whitespace-nowrap rounded-lg px-3 py-2 font-semibold text-violet-100 transition hover:bg-white/10 hover:text-white">
