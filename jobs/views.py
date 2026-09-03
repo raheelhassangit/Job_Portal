@@ -64,3 +64,11 @@ def job_delete(request, job_id):
         return redirect("jobs:job_list")
 
     return render(request, "jobs/job_delete.html", {"job": job})
+
+@login_required
+def my_jobs(request):
+    if request.user.role != "company":
+        raise PermissionDenied("Only companies can view their job postings.")
+
+    jobs = Job.objects.filter(company=request.user.company_profile).order_by("-posted_at")
+    return render(request, "jobs/my_jobs.html", {"jobs": jobs})

@@ -43,7 +43,7 @@
                     </a> {% endcomment %}
 
                     {% if request.user.role == "company" %}
-                        <a href="#" class="whitespace-nowrap rounded-lg px-3 py-2 font-semibold text-violet-100 transition hover:bg-white/10 hover:text-white">
+                        <a href="{% url 'jobs:my_jobs' %}" class="whitespace-nowrap rounded-lg px-3 py-2 font-semibold text-violet-100 transition hover:bg-white/10 hover:text-white">
                             My Jobs
                         </a>
                         <a href="{% url 'jobs:job_list' %}" class="whitespace-nowrap rounded-lg px-3 py-2 font-semibold text-violet-100 transition hover:bg-white/10 hover:text-white">
