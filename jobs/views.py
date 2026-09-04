@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import JobForm
-from .models import Job
+from .models import Job, Application
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
@@ -58,8 +58,10 @@ def job_list(request):
 
 def job_detail(request, job_id):
     job = get_object_or_404(Job, pk=job_id, is_active=True)
-    return render(request, "jobs/job_detail.html", {"job": job})
-
+    user_application = None
+    if request.user.is_authenticated and request.user.role == "candidate":
+        user_application = Application.objects.filter(job=job, candidate=request.user.candidate_profile).first()
+    return render(request, "jobs/job_detail.html", {"job": job, "user_application": user_application})
 
 @login_required
 def job_update(request, job_id):
@@ -100,3 +102,20 @@ def my_jobs(request):
 
     jobs = Job.objects.filter(company=request.user.company_profile).order_by("-posted_at")
     return render(request, "jobs/my_jobs.html", {"jobs": jobs})
+
+@login_required
+def job_apply(request, job_id):
+    if request.user.role != "candidate":
+        raise PermissionDenied("Only candidates can apply to jobs.")
+
+    job = get_object_or_404(Job, pk=job_id, is_active=True)
+    candidate = request.user.candidate_profile
+
+    already_applied = Application.objects.filter(job=job, candidate=candidate).exists()
+
+    if request.method == "POST" and not already_applied:
+        cover_message = request.POST.get("cover_message", "")
+        Application.objects.create(job=job, candidate=candidate, cover_message=cover_message)
+        return redirect("jobs:job_detail", job_id=job.pk)
+
+    return redirect("jobs:job_detail", job_id=job.pk)
