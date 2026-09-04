@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}My Applications{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-10 sm:px-8">
+  <h1 class="text-[#4d4b52] text-2xl font-bold mb-6">My Applications</h1>
+
+  {% if applications %}
+    <div class="space-y-3">
+      {% for application in applications %}
+        <div class="bg-white border border-[#e3ddef] rounded-xl p-5 flex items-center justify-between gap-4">
+          <div class="min-w-0">
+            <a href="{% url 'jobs:job_detail' job_id=application.job.pk %}" class="text-[#4d4b52] font-semibold hover:text-[#7852c4] transition">
+              {{ application.job.title }}
+            </a>
+            <p class="text-gray-500 text-sm mt-0.5">{{ application.job.company.company_name }}</p>
+            <p class="text-gray-400 text-xs mt-1">Applied {{ application.applied_at|timesince }} ago</p>
+          </div>
+
+          <div class="flex items-center gap-3 shrink-0">
+            <span class="text-xs font-medium px-2.5 py-1 rounded-full
+              {% if application.status == 'accepted' %}bg-green-50 text-green-700
+              {% elif application.status == 'rejected' %}bg-red-50 text-red-600
+              {% elif application.status == 'reviewed' %}bg-blue-50 text-blue-600
+              {% else %}bg-[#f0eaf9] text-[#7852c4]{% endif %}">
+              {{ application.get_status_display }}
+            </span>
+
+            <form method="POST" action="{% url 'jobs:withdraw_application' application_id=application.pk %}"
+                  onsubmit="return confirm('Withdraw this application?');">
+              {% csrf_token %}
+              <button type="submit" class="text-red-500 text-xs font-semibold hover:underline">Withdraw</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-16 text-gray-400 bg-white rounded-xl border border-[#e3ddef]">You haven't applied to any jobs yet.</div>
+  {% endif %}
+</div>
+{% endblock %}

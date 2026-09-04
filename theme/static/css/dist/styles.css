@@ -19,6 +19,7 @@
     --color-green-200: oklch(92.5% 0.084 155.995);
     --color-green-700: oklch(52.7% 0.154 150.069);
     --color-emerald-400: oklch(76.5% 0.177 163.223);
+    --color-blue-50: oklch(97% 0.014 254.604);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-indigo-900: oklch(35.9% 0.144 278.697);
@@ -1115,6 +1116,9 @@
   .bg-\[\#faf8ff\] {
     background-color: #faf8ff;
   }
+  .bg-blue-50 {
+    background-color: var(--color-blue-50);
+  }
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
@@ -1853,6 +1857,13 @@
     &:hover {
       @media (hover: hover) {
         color: #5f3ba9;
+      }
+    }
+  }
+  .hover\:text-\[\#7852c4\] {
+    &:hover {
+      @media (hover: hover) {
+        color: #7852c4;
       }
     }
   }
