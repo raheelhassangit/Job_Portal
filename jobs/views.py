@@ -138,3 +138,12 @@ def my_applications(request):
     applications = Application.objects.filter(candidate=request.user.candidate_profile).select_related("job__company").order_by("-applied_at")
 
     return render(request, "jobs/my_applications.html", {"applications": applications})
+
+@login_required
+def withdraw_application(request, application_id):
+    application = get_object_or_404(Application, pk=application_id, candidate=request.user.candidate_profile)
+
+    if request.method == "POST":
+        application.delete()
+
+    return redirect("jobs:my_applications")
