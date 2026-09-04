@@ -5,9 +5,9 @@
 <div class="max-w-4xl mx-auto px-4 py-10 sm:px-8">
   <h1 class="text-[#4d4b52] text-2xl font-bold mb-6">My Applications</h1>
 
-  {% if applications %}
+  {% if page_obj %}
     <div class="space-y-3">
-      {% for application in applications %}
+      {% for application in page_obj %}
         <div class="bg-white border border-[#e3ddef] rounded-xl p-5 flex items-center justify-between gap-4">
           <div class="min-w-0">
             <a href="{% url 'jobs:job_detail' job_id=application.job.pk %}" class="text-[#4d4b52] font-semibold hover:text-[#7852c4] transition">
@@ -37,6 +37,18 @@
     </div>
   {% else %}
     <div class="text-center py-16 text-gray-400 bg-white rounded-xl border border-[#e3ddef]">You haven't applied to any jobs yet.</div>
+  {% endif %}
+
+  {% if page_obj.has_other_pages %}
+  <div class="flex justify-center gap-2 mt-8">
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}" class="px-4 py-2 rounded-lg bg-white border border-[#e3ddef] text-sm text-[#4d4b52] hover:border-[#7852c4] transition">Previous</a>
+    {% endif %}
+    <span class="px-4 py-2 text-sm text-gray-500">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="px-4 py-2 rounded-lg bg-white border border-[#e3ddef] text-sm text-[#4d4b52] hover:border-[#7852c4] transition">Next</a>
+    {% endif %}
+  </div>
   {% endif %}
 </div>
 {% endblock %}

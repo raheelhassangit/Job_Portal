@@ -139,9 +139,14 @@ def job_applicants(request, job_id):
     job = get_object_or_404(Job, pk=job_id, company=request.user.company_profile)
     applications = job.applications.select_related("candidate__user").order_by("-applied_at")
 
+    paginator = Paginator(applications, 5)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     return render(request, "jobs/job_applicants.html", {
-    "job": job, "applications": applications,
-    "status_choices": Application.ApplicationStatus.choices,
+        "job": job,
+        "page_obj": page_obj,
+        "status_choices": Application.ApplicationStatus.choices,
     })
 
 @login_required
@@ -166,7 +171,11 @@ def my_applications(request):
 
     applications = Application.objects.filter(candidate=request.user.candidate_profile).select_related("job__company").order_by("-applied_at")
 
-    return render(request, "jobs/my_applications.html", {"applications": applications})
+    paginator = Paginator(applications, 5)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "jobs/my_applications.html", {"page_obj": page_obj})
 
 @login_required
 def withdraw_application(request, application_id):
