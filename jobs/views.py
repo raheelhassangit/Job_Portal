@@ -128,7 +128,10 @@ def job_applicants(request, job_id):
     job = get_object_or_404(Job, pk=job_id, company=request.user.company_profile)
     applications = job.applications.select_related("candidate__user").order_by("-applied_at")
 
-    return render(request, "jobs/job_applicants.html", {"job": job, "applications": applications})
+    return render(request, "jobs/job_applicants.html", {
+    "job": job, "applications": applications,
+    "status_choices": Application.ApplicationStatus.choices,
+    })
 
 @login_required
 def update_application_status(request, application_id):
