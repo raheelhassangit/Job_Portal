@@ -993,6 +993,9 @@
   .border-\[\#7852c4\] {
     border-color: #7852c4;
   }
+  .border-\[\#7852c4\]\/30 {
+    border-color: color-mix(in oklab, #7852c4 30%, transparent);
+  }
   .border-\[\#a98cdd\]\/40 {
     border-color: color-mix(in oklab, #a98cdd 40%, transparent);
   }
@@ -1781,6 +1784,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: #e6dcf5;
+      }
+    }
+  }
+  .hover\:bg-\[\#f0eaf9\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #f0eaf9;
       }
     }
   }
