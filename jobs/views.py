@@ -129,3 +129,12 @@ def job_applicants(request, job_id):
     applications = job.applications.select_related("candidate__user").order_by("-applied_at")
 
     return render(request, "jobs/job_applicants.html", {"job": job, "applications": applications})
+
+@login_required
+def my_applications(request):
+    if request.user.role != "candidate":
+        raise PermissionDenied("Only candidates can view their applications.")
+
+    applications = Application.objects.filter(candidate=request.user.candidate_profile).select_related("job__company").order_by("-applied_at")
+
+    return render(request, "jobs/my_applications.html", {"applications": applications})
