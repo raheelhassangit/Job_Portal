@@ -26,6 +26,7 @@ SECRET_KEY = "django-insecure-1+e%7ru-)32mdd^lmn_(woo)t5#3w$$jc4y_2=2pxm)8cgfkbq
 DEBUG = True
 
 ALLOWED_HOSTS = []
+INTERNAL_IPS = ["127.0.0.1"]
 
 AUTH_USER_MODEL = "accounts.User"
 
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
 if DEBUG:
     # Add django_browser_reload only in DEBUG mode
     INSTALLED_APPS += ["django_browser_reload"]
+    INSTALLED_APPS += ["debug_toolbar"]
 
 TAILWIND_APP_NAME = "theme"
 
@@ -68,6 +70,7 @@ if DEBUG:
     # Add django_browser_reload middleware only in DEBUG mode
     MIDDLEWARE += [
         "django_browser_reload.middleware.BrowserReloadMiddleware",
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
     ]
 
 ROOT_URLCONF = "config.urls"

@@ -27,7 +27,7 @@ def job_create(request):
 from django.core.paginator import Paginator
 
 def job_list(request):
-    jobs = Job.objects.filter(is_active=True)
+    jobs = Job.objects.filter(is_active=True).select_related("company")
 
     query = request.GET.get("q")
     if query:
@@ -106,7 +106,7 @@ def my_jobs(request):
     if request.user.role != "company":
         raise PermissionDenied("Only companies can view their job postings.")
 
-    jobs = Job.objects.filter(company=request.user.company_profile).order_by("-posted_at")
+    jobs = Job.objects.filter(company=request.user.company_profile).order_by("-posted_at").select_related("company")
 
     paginator = Paginator(jobs, 5)
     page_number = request.GET.get("page")
