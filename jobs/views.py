@@ -47,7 +47,7 @@ def job_list(request):
     if location:
         jobs = jobs.filter(location__icontains=location)
 
-    paginator = Paginator(jobs, 6)
+    paginator = Paginator(jobs, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
@@ -107,7 +107,12 @@ def my_jobs(request):
         raise PermissionDenied("Only companies can view their job postings.")
 
     jobs = Job.objects.filter(company=request.user.company_profile).order_by("-posted_at")
-    return render(request, "jobs/my_jobs.html", {"jobs": jobs})
+
+    paginator = Paginator(jobs, 5)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "jobs/my_jobs.html", {"page_obj": page_obj})
 
 @login_required
 def job_apply(request, job_id):
