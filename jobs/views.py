@@ -131,6 +131,21 @@ def job_applicants(request, job_id):
     return render(request, "jobs/job_applicants.html", {"job": job, "applications": applications})
 
 @login_required
+def update_application_status(request, application_id):
+    application = get_object_or_404(Application, pk=application_id)
+
+    if request.user.role != "company" or application.job.company != request.user.company_profile:
+        raise PermissionDenied("You cannot manage this application.")
+
+    if request.method == "POST":
+        new_status = request.POST.get("status")
+        if new_status in Application.ApplicationStatus.values:
+            application.status = new_status
+            application.save()
+
+    return redirect("jobs:job_applicants", job_id=application.job.pk)
+
+@login_required
 def my_applications(request):
     if request.user.role != "candidate":
         raise PermissionDenied("Only candidates can view their applications.")
