@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Applicants — {{ job.title }}{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-10 sm:px-8">
+  <div class="mb-6">
+    <a href="{% url 'jobs:job_detail' job_id=job.pk %}" class="text-[#7852c4] text-sm font-semibold hover:underline">← Back to job</a>
+    <h1 class="text-[#4d4b52] text-2xl font-bold mt-2">Applicants for {{ job.title }}</h1>
+    <p class="text-gray-500 text-sm mt-1">{{ applications|length }} applicant{{ applications|length|pluralize }}</p>
+  </div>
+
+  {% if applications %}
+    <div class="space-y-4">
+      {% for application in applications %}
+        <div class="bg-white border border-[#e3ddef] rounded-xl p-5">
+          <div class="flex justify-between items-start gap-4 mb-3">
+            <div class="flex items-center gap-3">
+              {% if application.candidate.profile_image %}
+                <img src="{{ application.candidate.profile_image.url }}" alt="" class="h-10 w-10 rounded-full object-cover">
+              {% else %}
+                <span class="grid h-10 w-10 place-items-center rounded-full bg-[#f0eaf9] text-[#7852c4] font-bold">
+                  {{ application.candidate.user.username|first|upper }}
+                </span>
+              {% endif %}
+              <div>
+                <h2 class="text-[#4d4b52] font-semibold">{{ application.candidate.user.username }}</h2>
+                <p class="text-gray-400 text-xs">Applied {{ application.applied_at|timesince }} ago</p>
+              </div>
+            </div>
+
+            <form method="POST" action="{% url 'jobs:update_application_status' application_id=application.pk %}" class="flex items-center gap-2">
+              {% csrf_token %}
+              <select name="status" class="bg-[#faf8ff] border border-[#e3ddef] rounded-lg px-3 py-1.5 text-xs text-[#4d4b52] focus:outline-none focus:ring-2 focus:ring-[#7852c4]/15">
+                {% for value, label in status_choices %}
+                  <option value="{{ value }}" {% if application.status == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+              </select>
+              <button type="submit" class="bg-[#7852c4] text-white px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-[#6742ad] transition">
+                Update
+              </button>
+            </form>
+          </div>
+
+          {% if application.candidate.skills %}
+            <p class="text-gray-500 text-xs mb-2"><span class="font-medium text-[#7852c4]">Skills:</span> {{ application.candidate.skills }}</p>
+          {% endif %}
+
+          {% if application.cover_message %}
+            <p class="text-gray-600 text-sm bg-[#faf8ff] border border-[#e3ddef] rounded-lg p-3 mb-2">{{ application.cover_message }}</p>
+          {% endif %}
+
+          <div class="flex items-center gap-3 text-xs">
+            {% if application.candidate.resume %}
+              <a href="{{ application.candidate.resume.url }}" target="_blank" class="text-[#7852c4] font-semibold hover:underline">View Resume</a>
+            {% endif %}
+            {% if application.candidate.linkedin_url %}
+              <a href="{{ application.candidate.linkedin_url }}" target="_blank" class="text-[#7852c4] font-semibold hover:underline">LinkedIn</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-16 text-gray-400 bg-white rounded-xl border border-[#e3ddef]">No applicants yet.</div>
+  {% endif %}
+</div>
+{% endblock %}
