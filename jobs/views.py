@@ -119,3 +119,13 @@ def job_apply(request, job_id):
         return redirect("jobs:job_detail", job_id=job.pk)
 
     return redirect("jobs:job_detail", job_id=job.pk)
+
+@login_required
+def job_applicants(request, job_id):
+    if request.user.role != "company":
+        raise PermissionDenied("Only companies can view applicants.")
+
+    job = get_object_or_404(Job, pk=job_id, company=request.user.company_profile)
+    applications = job.applications.select_related("candidate__user").order_by("-applied_at")
+
+    return render(request, "jobs/job_applicants.html", {"job": job, "applications": applications})
