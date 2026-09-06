@@ -56,3 +56,13 @@ Python · Django · PostgreSQL/SQLite · Tailwind CSS · Django Templates
 ```
 
 ## Project Structure
+Job_Portal/
+├── accounts/ # Custom user model, auth (signup/login/logout)
+├── profiles/ # Candidate & company profile models and views
+├── jobs/ # Job postings, applications, search/filter
+├── theme/ # Tailwind CSS integration
+└── config/ # Project settings and root URLs
+
+
+## License
+This project is for educational/portfolio purposes.
