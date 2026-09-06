@@ -1,0 +1,946 @@
+[
+{
+  "model": "sessions.session",
+  "pk": "1phrk84x04afo8dbb97h5p2d09q16wov",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAQAP-yNbK88Z2SnjdEtneNA8iWclSIv6NIKaCdGc0bprhvddpXXqaZYASEyy9LMT-5HYIesd27yL1ty5zEkYjTruLWiV_Xs_0b1LhWGEFpi4HIoMuarbMUaAg5GPYDspIYA1kli0raJo8FvdMqZMXFoGTjLHy-xO82-Q:1x0hsZ:h3brsnGCBl7CAHZr_sHZLDala1g3iYH8QuhUQ6rloyw",
+    "expire_date": "2026-09-13T15:55:31.215Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "2dzpgl6euojh5vtbnk1hrclm27h9nwac",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAQAP-yNbK88Z2SnjdEtneNA8iWclSIv6NIKaCdGc0bprhvddpXXqaZYASEyy9LMT-5HYIesd27yL1ty5zEkYjTruLWiV_Xs_0b1LhWGEFpi4HIoMuarbMUaAg5GPYDspIYA1kli0raJo8FvdMqZMXFoGTjLHy-xO82-Q:1x124w:jjCtVmYTtmf6vQ7NAtuCxkT5if7OXuJIq-LNhjw4HoE",
+    "expire_date": "2026-09-14T13:29:38.934Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "5uk87l18xcsjyq8e0jfgxjqe3ep3pb2p",
+  "fields": {
+    "session_data": ".eJxVjDEOgzAMAP_iuYpMYtOEsTtviBwcGtoKJAJT1b9XSAztene6N0TZtxL3mtc4KXRAcPllSYZnng-hD5nvixmWeVunZI7EnLaaftH8up3t36BILdCBD-QcksWxZWQNPosKoYbRtQ2Lz8rMiYZGLKF6J8QNZbXpahk9tvD5Ar-KNtY:1x0KNE:QSMO8QsvvyByrBoWXSGUj9RIqPuE0DnCt7vzirs6w18",
+    "expire_date": "2026-09-12T14:49:36.430Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "6kf561bvm5ly7a6ggyib8qhapic913kt",
+  "fields": {
+    "session_data": ".eJxVjDEKwzAMAP-iuRgc23KSsXvfYCTLatIWB-JkKv17CWRo17vj3pBo36a0t7KmWWAEhMsvY8rPUg8hD6r3xeSlbuvM5kjMaZu5LVJe17P9G0zUJhiBNfrOZ8QoTkPUXmPPzBZdYeXBi2AoakkHQoe5Yw7ek7W9Yzd0GOHzBQLpOEk:1x2Yfw:-5uDJAPdugvVKozE2BM9_G5_6TNvMpHqLjOPQBsYsek",
+    "expire_date": "2026-09-18T18:30:08.170Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "76s1wbrk38dfiztg8cwh8jf6n81b3qwq",
+  "fields": {
+    "session_data": ".eJxVjMsKwjAQAP9lzxLyfvTo3W8Im-xiqpJC057Ef5dCD3qdGeYNGfet5X3wmmeCCTRcflnB-uR-CHpgvy-iLn1b5yKORJx2iNtC_Lqe7d-g4WgwgbTG1BTZILM3QQVMjgoXG61WwSnlJUVH5E1CK72pEaUuxI6pRuUZPl_OMTeh:1x17Vi:7-mAxoUq_Ab1l0fnu9XOLPWXHYtfkuvixJA72mPTg5o",
+    "expire_date": "2026-09-14T19:17:38.067Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "hhz7o2r7lsj6ok6oehjj24ma96z3zhnp",
+  "fields": {
+    "session_data": ".eJxVjDEKwzAMAP-iuRgc23KSsXvfYCTLatIWB-JkKv17CWRo17vj3pBo36a0t7KmWWAEhMsvY8rPUg8hD6r3xeSlbuvM5kjMaZu5LVJe17P9G0zUJhiBNfrOZ8QoTkPUXmPPzBZdYeXBi2AoakkHQoe5Yw7ek7W9Yzd0GOHzBQLpOEk:1x2YYw:K3JT-lYeCHqM56RQ73hvA5kGeXyVrF-awO2TzZg0Tmo",
+    "expire_date": "2026-09-18T18:22:54.564Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qqyuicsskjzoccsrufdv26r89s8eehlm",
+  "fields": {
+    "session_data": ".eJxVjDEKwzAMAP-iuRgc23KSsXvfYCTLatIWB-JkKv17CWRo17vj3pBo36a0t7KmWWAEhMsvY8rPUg8hD6r3xeSlbuvM5kjMaZu5LVJe17P9G0zUJhiBNfrOZ8QoTkPUXmPPzBZdYeXBi2AoakkHQoe5Yw7ek7W9Yzd0GOHzBQLpOEk:1x0cdr:4J5B8Oc2A25quJ0IHmCV8JGONL6p8mSZXq2YootmChM",
+    "expire_date": "2026-09-13T10:19:59.838Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "r39gn56zs6tguarbe5z618o9mbbsqtww",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAQAP-yNbK88Z2SnjdEtneNA8iWclSIv6NIKaCdGc0bprhvddpXXqaZYASEyy9LMT-5HYIesd27yL1ty5zEkYjTruLWiV_Xs_0b1LhWGEFpi4HIoMuarbMUaAg5GPYDspIYA1kli0raJo8FvdMqZMXFoGTjLHy-xO82-Q:1wzxbk:7nzHekMmj0npzP-_dz8fUNsowHJKaI-2AqcW02sCjC4",
+    "expire_date": "2026-09-11T14:31:04.099Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "s04rrgziofrsh960qiwhqk10cfi3dpst",
+  "fields": {
+    "session_data": ".eJxVjMsKwjAQAP9lzxLyfvTo3W8Im-xiqpJC057Ef5dCD3qdGeYNGfet5X3wmmeCCTRcflnB-uR-CHpgvy-iLn1b5yKORJx2iNtC_Lqe7d-g4WgwgbTG1BTZILM3QQVMjgoXG61WwSnlJUVH5E1CK72pEaUuxI6pRuUZPl_OMTeh:1x2Z7p:R-4L9j5a5rMkpaqFzd_2rDzsfd2Foj-_aDo60lwddKw",
+    "expire_date": "2026-09-18T18:58:57.337Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "s74t8z5s8m8t9o9dvrx3k1usp5oq5kna",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAQAP-yNbK88Z2SnjdEtneNA8iWclSIv6NIKaCdGc0bprhvddpXXqaZYASEyy9LMT-5HYIesd27yL1ty5zEkYjTruLWiV_Xs_0b1LhWGEFpi4HIoMuarbMUaAg5GPYDspIYA1kli0raJo8FvdMqZMXFoGTjLHy-xO82-Q:1x1jrk:uJ5iFSoqgDJQqJffudsim_ngo6mmk0F2PK7G77ipwRk",
+    "expire_date": "2026-09-16T12:14:56.940Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "sj9alfh39ic6zg2jzhb0bs4h4nwnyy0c",
+  "fields": {
+    "session_data": ".eJxVjEEKwyAQAP-y5yIa1xVz7L1vkNWVmrYoxORU-vcSyKG9zgzzhsj7VuM-yhoXgRk8XH5Z4vws7RDy4HbvKve2rUtSR6JOO9StS3ldz_ZvUHlUmCFQcIYEjS2as3dsLToMIqSZyYkp2k9CPgmzNjogoZbJGXaEISHD5wvESTcA:1x1ik3:dHGZtR-r2SOYtQ4sZmzFsyxv1Mp6VPo5Joz3QuX1OFY",
+    "expire_date": "2026-09-16T11:02:55.461Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ubifn21tstuy8paw4u18kqut72h5z3y6",
+  "fields": {
+    "session_data": ".eJxVjDEKwzAMAP-iuRgc23KSsXvfYCTLatIWB-JkKv17CWRo17vj3pBo36a0t7KmWWAEhMsvY8rPUg8hD6r3xeSlbuvM5kjMaZu5LVJe17P9G0zUJhiBNfrOZ8QoTkPUXmPPzBZdYeXBi2AoakkHQoe5Yw7ek7W9Yzd0GOHzBQLpOEk:1x276O:d6V39VPSmdz7rskalIPxUjQI7_rrB3IWHBUIiTixjck",
+    "expire_date": "2026-09-17T13:03:36.120Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "vn3aqkd66waydcvfrn4uukzlyu47224k",
+  "fields": {
+    "session_data": ".eJxVjMsKwjAQAP9lzxLyfvTo3W8Im-xiqpJC057Ef5dCD3qdGeYNGfet5X3wmmeCCTRcflnB-uR-CHpgvy-iLn1b5yKORJx2iNtC_Lqe7d-g4WgwgbTG1BTZILM3QQVMjgoXG61WwSnlJUVH5E1CK72pEaUuxI6pRuUZPl_OMTeh:1x1T4h:CYpfsRgs_UpEwN9vtoyDLk863wRnV2HSAoSEHkJcRzE",
+    "expire_date": "2026-09-15T18:19:11.408Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "wbmixshmr6etgpuo45sei66iqdc214wx",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAQAP-yNbK88Z2SnjdEtneNA8iWclSIv6NIKaCdGc0bprhvddpXXqaZYASEyy9LMT-5HYIesd27yL1ty5zEkYjTruLWiV_Xs_0b1LhWGEFpi4HIoMuarbMUaAg5GPYDspIYA1kli0raJo8FvdMqZMXFoGTjLHy-xO82-Q:1x24xi:O0f-3eSYBeasbh1g1MI74ZnJ0R4LYqsWT9UyYlzF9YA",
+    "expire_date": "2026-09-17T10:46:30.505Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zajliucn7shwcfjrrhcl4b6dpley6fhi",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAQAP-yNbK88Z2SnjdEtneNA8iWclSIv6NIKaCdGc0bprhvddpXXqaZYASEyy9LMT-5HYIesd27yL1ty5zEkYjTruLWiV_Xs_0b1LhWGEFpi4HIoMuarbMUaAg5GPYDspIYA1kli0raJo8FvdMqZMXFoGTjLHy-xO82-Q:1wzZST:h4cDJV4zDdPEhLPPSJS9DXSlfpJyOa0_VUo0Sxcqs4o",
+    "expire_date": "2026-09-10T12:43:53.802Z"
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$uNseHBYkfI9yKnFvNrhas6$Jzg+p4Yk3701sen6Fq65ZW6d1CetXHuHRMuagfLgl7w=",
+    "last_login": "2026-09-03T10:46:30.494Z",
+    "is_superuser": true,
+    "username": "raheelhassan",
+    "first_name": "RAHEEL",
+    "last_name": "HASSAN",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-27T12:43:28Z",
+    "email": "raheelhassan@gmail.com",
+    "role": "",
+    "groups": [],
+    "user_permissions": [
+      [
+        "change_logentry",
+        "admin",
+        "logentry"
+      ]
+    ]
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$dV0N0rTyd04U2ujqQDhnnf$gJMshpZzOeL2Dh8JtZNPcaxAiOxuq9mFx0Kbl4RQiLo=",
+    "last_login": "2026-09-04T18:58:57.328Z",
+    "is_superuser": false,
+    "username": "raheelhassan1",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-28T08:45:49Z",
+    "email": "raheelhassan1@gmail.com",
+    "role": "company",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$LBRqVKpd0ea2GTBD40tI94$wTi+HaqTIqRWHy2YYB7ot9chPY9tOvjaQqkbObnDKcw=",
+    "last_login": "2026-09-02T11:59:06.031Z",
+    "is_superuser": false,
+    "username": "raheelhassan2",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-28T14:30:26Z",
+    "email": "raheelhassan2@gmail.com",
+    "role": "company",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$Erz1f7D8VPzSes9XXro4QG$zBBvRQL62vY5i31wz2KLU+Ccyn5QVBpRyqY9sbHy5v8=",
+    "last_login": "2026-09-02T11:59:29.959Z",
+    "is_superuser": false,
+    "username": "raheelhassan3",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-29T14:49:32.999Z",
+    "email": "raheelhassan3@gmail.com",
+    "role": "candidate",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$IBIs5yw99uJiRyS40tPZIb$Y8SPVlrUJOc2ysdB6iUkNHNdNjNz9ujXOgq70gUVTBM=",
+    "last_login": "2026-08-30T08:45:14.242Z",
+    "is_superuser": false,
+    "username": "raheelhassan4",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T08:45:10.450Z",
+    "email": "raheelhassan4@gmail.com",
+    "role": "candidate",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$2y695ujWahh9OKvkA3c9FR$1uRUPke3SQf2Rcs5nhqVO/V8gB070rchwbDCQZxurPI=",
+    "last_login": "2026-09-04T18:30:08.161Z",
+    "is_superuser": false,
+    "username": "raheelhassan5",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T08:48:44Z",
+    "email": "raheelhassan5@gmail.com",
+    "role": "candidate",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$96iKOJUOwFTZuvavQMGkpe$qtGiGYmzigaqsbAvt98G9ePnYB7z5D2Q/6gkB/tIZAA=",
+    "last_login": "2026-09-02T11:02:55Z",
+    "is_superuser": false,
+    "username": "raheelhassan6",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T09:13:23Z",
+    "email": "raheelhassan6@gmail.com",
+    "role": "candidate",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "profiles.candidateprofile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "raheelhassan3"
+    ],
+    "bio": "Candidate",
+    "skills": "Python, Django, SQL",
+    "experience": "NA",
+    "education": "BS",
+    "location": "Islamabad, Pakistan",
+    "phone_number": "1234567890",
+    "linkedin_url": "https://www.linkedin.com/in/samplenon",
+    "profile_image": "candidate_images/ChatGPT_Image_Aug_26_2026_12_50_47_AM.png",
+    "resume": "resumes/Raheel_Hassan_CL.pdf"
+  }
+},
+{
+  "model": "profiles.candidateprofile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "raheelhassan4"
+    ],
+    "bio": "",
+    "skills": "",
+    "experience": "",
+    "education": "",
+    "location": "",
+    "phone_number": "",
+    "linkedin_url": "",
+    "profile_image": "",
+    "resume": ""
+  }
+},
+{
+  "model": "profiles.candidateprofile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "raheelhassan5"
+    ],
+    "bio": "",
+    "skills": "",
+    "experience": "",
+    "education": "",
+    "location": "",
+    "phone_number": "",
+    "linkedin_url": "",
+    "profile_image": "candidate_images/Trans_idLvjta.jpeg",
+    "resume": ""
+  }
+},
+{
+  "model": "profiles.companyprofile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "raheelhassan6"
+    ],
+    "company_name": "",
+    "website": "",
+    "description": "",
+    "industry": "",
+    "company_size": "",
+    "location": "",
+    "profile_image": ""
+  }
+},
+{
+  "model": "profiles.companyprofile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "raheelhassan1"
+    ],
+    "company_name": "Softech Ltd.",
+    "website": "https://www.linkedin.com/in/exampleuser/",
+    "description": "Softech Pvt Ltd.",
+    "industry": "Tech",
+    "company_size": "51-200",
+    "location": "Lahore",
+    "profile_image": ""
+  }
+},
+{
+  "model": "profiles.companyprofile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "raheelhassan2"
+    ],
+    "company_name": "",
+    "website": "",
+    "description": "",
+    "industry": "",
+    "company_size": "",
+    "location": "",
+    "profile_image": ""
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 1,
+  "fields": {
+    "company": 2,
+    "title": "Python Developer",
+    "description": "Python developer job...",
+    "requirements": "python\r\ndjango\r\nDRF\r\nRESTAPIs\r\nSQL",
+    "location": "Lahore",
+    "job_type": "full_time",
+    "experience_level": "mid",
+    "salary_min": 100000,
+    "salary_max": 150000,
+    "is_active": true,
+    "posted_at": "2026-08-31T13:30:40.624Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 2,
+  "fields": {
+    "company": 2,
+    "title": "JavaScript Developer",
+    "description": "Description for JS developer Job...",
+    "requirements": "JS\r\nNode.JS\r\nReact.JS\r\nMongoDB\r\nExpress.JS",
+    "location": "Lahore",
+    "job_type": "full_time",
+    "experience_level": "senior",
+    "salary_min": 120000,
+    "salary_max": 200000,
+    "is_active": true,
+    "posted_at": "2026-09-02T10:35:55.170Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 3,
+  "fields": {
+    "company": 1,
+    "title": "C# Developer",
+    "description": "Description for C# developer job...",
+    "requirements": "C#\r\n.NET\r\nUnity",
+    "location": "Karachi, Pakistan",
+    "job_type": "remote",
+    "experience_level": "entry",
+    "salary_min": 60000,
+    "salary_max": 120000,
+    "is_active": false,
+    "posted_at": "2026-09-02T11:04:03.629Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 4,
+  "fields": {
+    "company": 1,
+    "title": "Java Developer",
+    "description": "Looking java developer who has hands on experience...",
+    "requirements": "Java\r\nSpringBoot\r\nSQL/DB\r\nRESTAPIs",
+    "location": "Islamabad, Pakistan",
+    "job_type": "part_time",
+    "experience_level": "mid",
+    "salary_min": 90000,
+    "salary_max": 160000,
+    "is_active": true,
+    "posted_at": "2026-09-02T11:37:26.018Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 5,
+  "fields": {
+    "company": 2,
+    "title": ".Net Developer",
+    "description": ".Net Developer with 5 years of hands on experience.",
+    "requirements": "C++\r\nC#\r\n.Net\r\nGood understanding of all concepts",
+    "location": "Rawalpindi, Pakistan",
+    "job_type": "full_time",
+    "experience_level": "mid",
+    "salary_min": 100000,
+    "salary_max": 160000,
+    "is_active": true,
+    "posted_at": "2026-09-04T19:00:38.363Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 6,
+  "fields": {
+    "company": 2,
+    "title": "GO Developer",
+    "description": "GO Developer with 2 years of hands on experience with proven expertise.",
+    "requirements": "GOLANG\r\nCloud Architecture\r\nAWS\r\nGCP\r\nAzure",
+    "location": "Karachi, Pakistan",
+    "job_type": "contract",
+    "experience_level": "senior",
+    "salary_min": 110000,
+    "salary_max": 180000,
+    "is_active": true,
+    "posted_at": "2026-09-04T19:02:14.515Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 7,
+  "fields": {
+    "company": 2,
+    "title": "AI/ML Engg.",
+    "description": "AI/ML Developer with minimum 1 year of hands on experience.",
+    "requirements": "Machine Learning \r\nPython\r\nLLMs\r\nAPIs\r\nPytorch\r\nSKlearn",
+    "location": "Lahore, Pakistan",
+    "job_type": "full_time",
+    "experience_level": "entry",
+    "salary_min": 80000,
+    "salary_max": 120000,
+    "is_active": true,
+    "posted_at": "2026-09-04T19:04:05.289Z"
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 8,
+  "fields": {
+    "company": 2,
+    "title": "Cloud Engg.",
+    "description": "Cloud Developer with 2 years of hands on experience.",
+    "requirements": "Cloud platform such as AWS, GCP or AZURE",
+    "location": "Lahore, Pakistan",
+    "job_type": "remote",
+    "experience_level": "mid",
+    "salary_min": null,
+    "salary_max": null,
+    "is_active": true,
+    "posted_at": "2026-09-04T19:05:07.496Z"
+  }
+},
+{
+  "model": "jobs.application",
+  "pk": 1,
+  "fields": {
+    "job": 1,
+    "candidate": 3,
+    "status": "pending",
+    "cover_message": "",
+    "applied_at": "2026-09-03T13:03:49.296Z"
+  }
+},
+{
+  "model": "jobs.application",
+  "pk": 2,
+  "fields": {
+    "job": 2,
+    "candidate": 3,
+    "status": "reviewed",
+    "cover_message": "",
+    "applied_at": "2026-09-03T13:06:00.903Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-08-27T12:44:24.209Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "1",
+    "object_repr": "raheelhassan",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-08-27T12:47:56.099Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "1",
+    "object_repr": "raheelhassan",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"User permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-08-27T18:12:48.001Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "raheelhassan1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-08-27T19:14:13.595Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "1",
+    "object_repr": "raheelhassan",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-08-27T19:14:21.194Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "1",
+    "object_repr": "raheelhassan",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-08-28T08:26:40.286Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "1",
+    "object_repr": "raheelhassan",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-08-28T08:46:34.028Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "raheelhassan1",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-08-28T08:46:41.854Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "1",
+    "object_repr": "raheelhassan",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-08-28T08:46:49.544Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "raheelhassan1",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-08-30T09:08:34.527Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "raheelhassan1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-08-30T09:09:13.494Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "raheelhassan2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-08-30T15:55:52.327Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "raheelhassan5",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-08-30T15:56:00.749Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "raheelhassan5",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-08-31T11:43:00.193Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "raheelhassan1",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-08-31T13:30:40.628Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "jobs",
+      "job"
+    ],
+    "object_id": "1",
+    "object_repr": "Python Developer at ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-08-31T13:30:50.811Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "jobs",
+      "job"
+    ],
+    "object_id": "1",
+    "object_repr": "Python Developer at ",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-08-31T14:00:38.269Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "raheelhassan1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-08-31T14:03:54.657Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "raheelhassan1",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-08-31T14:06:10.557Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "raheelhassan1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-08-31T14:07:32.460Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "profiles",
+      "companyprofile"
+    ],
+    "object_id": "2",
+    "object_repr": "Softech Ltd.",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Company name\", \"Website\", \"Description\", \"Industry\", \"Company size\", \"Location\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-09-01T18:04:50.662Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "raheelhassan1",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-09-02T10:37:33.236Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "7",
+    "object_repr": "raheelhassan6",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-09-03T10:11:22.431Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "accounts",
+      "user"
+    ],
+    "object_id": "7",
+    "object_repr": "raheelhassan6",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-09-03T10:12:47.373Z",
+    "user": [
+      "raheelhassan"
+    ],
+    "content_type": [
+      "profiles",
+      "candidateprofile"
+    ],
+    "object_id": "1",
+    "object_repr": "raheelhassan3",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Bio\", \"Skills\", \"Experience\", \"Education\", \"Location\", \"Phone number\", \"Linkedin url\", \"Profile image\", \"Resume\"]}}]"
+  }
+}
+]
