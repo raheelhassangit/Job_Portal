@@ -14,9 +14,45 @@ A full-stack job portal built with Django, connecting job-seeking candidates wit
 ## Tech Stack
 Python · Django · PostgreSQL/SQLite · Tailwind CSS · Django Templates
 
+## Screenshots
+
+| Home | Job Listings | Job Detail |
+|------|--------------|------------|
+| _add screenshot_ | _add screenshot_ | _add screenshot_ |
+
+| Candidate Profile | Company Profile | Applicants View |
+|--------------------|------------------|------------------|
+| _add screenshot_ | _add screenshot_ | _add screenshot_ |
+
 ## Getting Started
+
 1. Clone the repo and create a virtual environment
-2. `pip install -r requirements.txt`
-3. Copy `.env.example` to `.env` and fill in `SECRET_KEY`, `DEBUG`, etc.
-4. `python manage.py migrate`
-5. `python manage.py runserver`
+```bash
+   git clone https://github.com/raheelhassangit/Job_Portal.git
+   cd Job_Portal
+   python -m venv .venv
+   .venv\Scripts\activate  # Windows
+```
+
+2. Install dependencies
+```bash
+   pip install -r requirements.txt
+```
+
+3. Set up environment variables
+```bash
+   cp .env.example .env
+```
+   Fill in `SECRET_KEY`, `DEBUG`, and any other required values.
+
+4. Run migrations
+```bash
+   python manage.py migrate
+```
+
+5. Start the development server
+```bash
+   python manage.py runserver
+```
+
+## Project Structure
